@@ -1,0 +1,423 @@
+/*
+ * Modulo: pages.css
+ * Escopo: paginas institucionais (home, about, contact).
+ */
+
+/* ===== Contato ===== */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.contact-card {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.contact-card h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.contact-card a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+/* ===== Sobre ===== */
+.about-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.about-content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.about-section {
+    padding: 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.about-section:last-child {
+    border-bottom: none;
+}
+
+.about-section h2 {
+    color: var(--color-primary);
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.about-section p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.skill-badge {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--color-primary-shadow-strong);
+}
+
+.projects-list,
+.characteristics-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.projects-list li,
+.characteristics-list li {
+    color: #555;
+    font-size: 16px;
+    padding: 12px 0;
+    line-height: 1.8;
+}
+
+.projects-list li:before {
+    content: "→ ";
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.characteristics-list li:before {
+    content: attr(data-content);
+    margin-right: 8px;
+}
+
+/* ===== Inicio ===== */
+.home-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
+    color: #fff;
+    padding: 60px 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 20px var(--color-primary-shadow-medium);
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background-color: #fff;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about-project {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.about-project h2 {
+    color: var(--color-primary);
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-project p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.technologies {
+    margin-bottom: 50px;
+}
+
+.technologies h2 {
+    color: var(--color-primary);
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.tech-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    padding: 20px 18px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 14px var(--color-primary-shadow-subtle);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border: 1px solid #d9e8fb;
+    border-top: 2px solid var(--color-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 9px 20px var(--color-primary-shadow-elevated);
+    border-top-color: var(--color-primary-hover);
+}
+
+.tech-icon {
+    font-size: 34px;
+    margin: 0 auto 10px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf3ff;
+}
+
+.tech-card h3 {
+    color: #18324f;
+    font-size: 18px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.tech-card p {
+    color: #5a6d82;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.features {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.features h2 {
+    color: var(--color-primary);
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 760px;
+    text-align: left;
+}
+
+.features-list li {
+    color: #555;
+    font-size: 16px;
+    padding: 16px 0;
+    margin-left: 0;
+    line-height: 1.8;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.features-list li:last-child {
+    border-bottom: none;
+}
+
+.next-steps {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.next-steps h2 {
+    color: var(--color-primary);
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 760px;
+    text-align: left;
+    counter-reset: step;
+}
+
+.steps-list li {
+    color: #555;
+    font-size: 16px;
+    padding: 16px 0 16px 50px;
+    margin-left: 0;
+    line-height: 1.8;
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.steps-list li:last-child {
+    border-bottom: none;
+}
+
+.steps-list li:before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    left: 0;
+    top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 600;
+}
+
+/* ===== Tema Escuro ===== */
+html[data-theme="dark"] .contact-card {
+    background-color: #23272f;
+}
+
+html[data-theme="dark"] .contact-card h3 {
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .about-content {
+    background-color: #23272f;
+}
+
+html[data-theme="dark"] .about-section {
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .about-section p,
+html[data-theme="dark"] .projects-list li,
+html[data-theme="dark"] .characteristics-list li {
+    color: #a0aec0;
+}
+
+html[data-theme="dark"] .about-project,
+html[data-theme="dark"] .features,
+html[data-theme="dark"] .next-steps {
+    background-color: #23272f;
+}
+
+html[data-theme="dark"] .about-project p,
+html[data-theme="dark"] .features-list li,
+html[data-theme="dark"] .steps-list li {
+    color: #a0aec0;
+}
+
+html[data-theme="dark"] .features-list li,
+html[data-theme="dark"] .steps-list li {
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .tech-card {
+    background: linear-gradient(180deg, #23272f 0%, #1e2535 100%);
+    border-color: #334155;
+    border-top-color: var(--color-primary);
+}
+
+html[data-theme="dark"] .tech-card h3 {
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .tech-card p {
+    color: #a0aec0;
+}
+
+html[data-theme="dark"] .tech-icon {
+    background: #1a2535;
+}
+

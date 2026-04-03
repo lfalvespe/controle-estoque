@@ -1,0 +1,312 @@
+/*
+ * Modulo: responsive.css
+ * Escopo: erro e ajustes responsivos globais.
+ */
+
+/* ===== Pagina de Erro ===== */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.error-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-box h1 {
+    color: #dc3545;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.error-box p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* ===== Mobile Global (max-width: 600px) ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 10px 10px 0 10px;
+    }
+
+    header {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    header img {
+        height: 45px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        margin-top: 12px;
+    }
+
+    nav a {
+        display: block;
+        padding: 14px 16px;
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a:hover {
+        background-color: var(--color-primary-hover);
+        transform: translateY(-1px);
+    }
+
+    .navbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0;
+    }
+
+    .navbar-left,
+    .navbar-right {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        min-width: 44px;
+    }
+
+    .navbar-left {
+        justify-content: flex-start;
+    }
+
+    .navbar-right { justify-content: flex-end; }
+
+    .navbar-menu {
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    .nav-auth {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .user-info {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .btn-logout {
+        width: 100%;
+        text-align: center;
+    }
+
+    .auth-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .auth-link-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    footer {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        width: 100vw;
+        margin-top: 30px;
+        margin-bottom: 0;
+        padding: 20px 15px;
+    }
+
+    footer h3 {
+        font-size: 16px;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 10px;
+    }
+
+    .contact-card {
+        padding: 24px 18px;
+    }
+
+    .about-section {
+        padding: 20px;
+    }
+
+    .about-section h2 {
+        font-size: 20px;
+    }
+
+    .skills-grid {
+        gap: 8px;
+    }
+
+    .skill-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .product-card {
+        width: min(92vw, 340px);
+        max-width: 340px;
+        min-width: 0;
+        height: 390px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .product-card-media {
+        height: 160px;
+    }
+
+    .product-details {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .search-form {
+        flex-direction: column;
+    }
+
+    .search-input {
+        min-width: 100%;
+    }
+
+    .search-btn,
+    .search-clear {
+        width: 100%;
+    }
+
+    .no-results {
+        padding: 40px 20px;
+        margin: 20px 0;
+    }
+
+    .no-results h2 {
+        font-size: 22px;
+    }
+
+    .hero {
+        padding: 40px 24px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 12px;
+    }
+
+    .tech-card {
+        padding: 16px 12px;
+    }
+
+    .tech-icon {
+        font-size: 28px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .about-project,
+    .features,
+    .next-steps {
+        padding: 24px;
+    }
+
+    .about-project h2,
+    .features h2,
+    .next-steps h2,
+    .technologies h2 {
+        font-size: 24px;
+    }
+
+    .auth-box {
+        padding: 30px 20px;
+    }
+
+    .auth-box h2 {
+        font-size: 22px;
+    }
+
+    .user-form {
+        padding: 30px 20px;
+        margin: 20px 0;
+    }
+
+    .users-table {
+        font-size: 14px;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 12px 8px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .btn-small {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-actions-group button,
+    .form-actions-group a {
+        width: 100%;
+        padding: 12px 24px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }

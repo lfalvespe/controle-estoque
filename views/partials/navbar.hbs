@@ -1,0 +1,51 @@
+<nav class="navbar">
+    <div class="navbar-left">
+        <button id="navbar-burger" class="navbar-burger hide-desktop" aria-label="Abrir menu" aria-expanded="false" aria-controls="navbar-menu">
+            <span class="burger-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="32" height="32" rx="6" fill="var(--color-primary)"/>
+                    <line x1="7" y1="10" x2="25" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="7" y1="16" x2="25" y2="16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="7" y1="22" x2="25" y2="22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </span>
+        </button>
+    </div>
+    <div id="navbar-menu" class="navbar-menu">
+        <a href="/">Home</a>
+        <a href="/products">Produtos</a>
+        {{#if user}}
+            {{#if (isAdmin user.role)}}
+                <a href="/products/create">Cadastrar Produto</a>
+                <a href="/users">Gerenciar Usuários</a>
+            {{/if}}
+        {{/if}}
+        <a href="/about">Sobre</a>
+        <a href="/contact">Contato</a>
+        <div class="nav-auth">
+            {{#if user}}
+                <a href="/users/profile" class="navbar-profile hide-mobile" style="display:flex;flex-direction:column;align-items:center;margin-right:12px;text-decoration:none;cursor:pointer;">
+                    {{#if user.profileImage}}
+                        <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--color-primary);">
+                    {{else}}
+                        <span class="user-avatar-fallback" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#e0e7ef;border-radius:50%;font-size:1.7rem;color:var(--color-primary);border:1.5px solid var(--color-primary);">👤</span>
+                    {{/if}}
+                    <span class="user-profile-name" style="font-size:13px;font-weight:600;margin-top:2px;max-width:70px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{user.name}}</span>
+                </a>
+                <a href="/auth/logout" class="btn-logout">Sair</a>
+            {{else}}
+                <div class="auth-links">
+                    <a href="/auth/login" class="auth-link-btn">Login</a>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    </div>
+    <div class="navbar-right">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
+            <span class="theme-icon" id="theme-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+        </button>
+    </div>
+</nav>
+<script src="/js/theme-toggle.js"></script>
+<script src="/js/navbar-mobile.js"></script>

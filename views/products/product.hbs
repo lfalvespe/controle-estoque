@@ -1,0 +1,97 @@
+<h1 class="page-title">Detalhes do produto</h1>
+
+{{#if created}}
+<div class="alert alert-success" id="successAlert">
+    ✅ Produto criado com sucesso!
+</div>
+{{else if updated}}
+<div class="alert alert-success" id="successAlert">
+    ✅ Produto atualizado com sucesso!
+</div>
+{{/if}}
+
+<div class="product-details">
+    <a href="/products" class="btn btn-secondary" style="margin-bottom:18px;display:inline-block;">← Voltar para todos os produtos</a>
+    <h2>{{product.name}}</h2>
+    {{#if product.imageUrl}}
+        <img src="{{product.imageUrl}}" alt="{{product.name}}" class="product-image">
+    {{/if}}     
+
+    <p>Preço: {{formatCurrency product.price}}</p>
+
+
+    <p style="margin:18px 0 18px 0;">
+        <strong>Status:</strong>
+        {{#if product.available}}
+            <span style="color:green;">Disponível</span>
+        {{else}}
+            <span style="color:#b23c3c;">Indisponível</span>
+        {{/if}}
+    </p>
+    <p>{{product.description}}</p>
+
+ <div class="action">
+    {{#if user}}
+        {{#if (isAdmin user.role)}}
+            <a href="/products/edit/{{product._id}}" class="btn btn-primary">Editar</a>
+            <form id="deleteProductForm" action="/products/delete/{{product._id}}" method="POST" class="form-inline">
+                <button type="button" class="btn btn-danger" id="openDeleteModal">Excluir</button>
+            </form>
+            <!-- Modal de confirmação -->
+            <div id="deleteModal" class="modal-overlay" style="display:none;">
+                <div class="modal-content">
+                    <h3>Confirmar exclusão</h3>
+                    <p>Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.</p>
+                    <div class="modal-actions">
+                        <button id="confirmDelete" class="btn btn-danger">Excluir</button>
+                        <button id="cancelDelete" class="btn btn-secondary">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+ </div>
+
+</div>
+
+<script>
+    // Auto-remove success alert after 4 seconds
+    const successAlert = document.getElementById('successAlert');
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.transition = 'opacity 0.3s ease';
+            successAlert.style.opacity = '0';
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 300);
+        }, 4000);
+    }
+
+    // Modal de confirmação de exclusão
+    const openDeleteModalBtn = document.getElementById('openDeleteModal');
+    const deleteModal = document.getElementById('deleteModal');
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+    const cancelDeleteBtn = document.getElementById('cancelDelete');
+    const deleteProductForm = document.getElementById('deleteProductForm');
+
+    if (openDeleteModalBtn && deleteModal && confirmDeleteBtn && cancelDeleteBtn && deleteProductForm) {
+        openDeleteModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            deleteModal.style.display = 'flex';
+        });
+        cancelDeleteBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            deleteModal.style.display = 'none';
+        });
+        confirmDeleteBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            deleteProductForm.submit();
+        });
+        // Fechar modal ao clicar fora do conteúdo
+        deleteModal.addEventListener('click', function(e) {
+            if (e.target === deleteModal) {
+                deleteModal.style.display = 'none';
+            }
+        });
+    }
+</script>

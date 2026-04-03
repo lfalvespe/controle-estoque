@@ -1,0 +1,10 @@
+/*
+ * Entrada do CSS
+ * Mantem a ordem de importacao para preservar a prioridade das regras.
+ */
+@import url('./modules/core.css');
+@import url('./modules/products.css');
+@import url('./modules/pages.css');
+@import url('./modules/auth.css');
+@import url('./modules/users.css');
+@import url('./modules/responsive.css');

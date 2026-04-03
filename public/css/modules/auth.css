@@ -1,0 +1,159 @@
+/*
+ * Modulo: auth.css
+ * Escopo: telas e componentes de autenticacao.
+ */
+
+/* ===== Autenticacao ===== */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.auth-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.auth-box .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-box .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+.auth-box .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.auth-box .form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
+}
+
+.auth-box .form-group small {
+    display: block;
+    color: #999;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.auth-box button,
+.auth-box .btn-secondary {
+    padding: 12px 24px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.auth-box button:hover,
+.auth-box .btn-secondary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.auth-box .btn-secondary {
+    background-color: #6c757d;
+    margin-left: 10px;
+}
+
+.auth-box .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.form-actions-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: stretch;
+}
+
+.form-actions-group button,
+.form-actions-group a {
+    flex: 1;
+    text-align: center;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.auth-link a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Tema Escuro ===== */
+html[data-theme="dark"] .auth-box {
+    background-color: #23272f;
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .auth-box h2 {
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .auth-box .form-group label {
+    color: #a0aec0;
+}
+
+html[data-theme="dark"] .auth-box .form-group input {
+    background-color: #1e2127;
+    border-color: #3a4050;
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .auth-box .form-group small {
+    color: #a0aec0;
+}
+
+html[data-theme="dark"] .auth-link {
+    color: #a0aec0;
+}
+
+

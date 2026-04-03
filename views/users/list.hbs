@@ -1,0 +1,70 @@
+<div class="users-container">
+    <h2>Gerenciar Usuários</h2>
+    
+    {{#if created}}
+        <div class="alert alert-success">Usuário criado com sucesso!</div>
+    {{/if}}
+    {{#if updated}}
+        <div class="alert alert-success">Usuário atualizado com sucesso!</div>
+    {{/if}}
+    {{#if deleted}}
+        <div class="alert alert-success">Usuário deletado com sucesso!</div>
+    {{/if}}
+    {{#if error}}
+        <div class="alert alert-danger">{{error}}</div>
+    {{/if}}
+
+    <div class="users-header">
+        <a href="/users/create" class="btn-primary">+ Novo Usuário</a>
+    </div>
+
+    {{#if users}}
+        <div class="users-table-container">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                        <th>Data de Criação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{email}}</td>
+                            <td>
+                                {{#if (isAdmin role)}}
+                                    <span class="badge badge-admin">Administrador</span>
+                                {{else}}
+                                    <span class="badge badge-user">Usuário</span>
+                                {{/if}}
+                            </td>
+                            <td>{{formatDate createdAt}}</td>
+                            <td class="actions">
+                                <a href="/users/{{_id}}/edit" class="btn-small">Editar</a>
+                                {{#if (eq role "user")}}
+                                    <a href="/users/{{_id}}/change-password" class="btn-small">Alterar Senha</a>
+                                {{/if}}
+                                <a href="/users/{{_id}}/delete" class="btn-small btn-delete" onclick="return confirm('Tem certeza?')">Deletar</a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{else}}
+        <p>Nenhum usuário registrado.</p>
+    {{/if}}
+</div>
+
+<script>
+    const deleteAlert = document.querySelector('.alert-success');
+    if (deleteAlert && window.location.search.includes('deleted=true')) {
+        setTimeout(() => {
+            deleteAlert.style.display = 'none';
+        }, 4000);
+    }
+</script>

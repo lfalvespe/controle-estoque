@@ -1,0 +1,82 @@
+<h1 class="page-title">Produtos</h1>
+
+{{#if deleted}}
+<div class="alert alert-success" id="successAlert">
+    ✅ Produto excluído com sucesso!
+</div>
+{{/if}}
+
+<div class="search-container">
+    <form action="/products" method="GET" class="search-form">
+        <input 
+            type="text" 
+            name="q" 
+            class="search-input" 
+            placeholder="Buscar por nome ou descrição..." 
+            value="{{searchQuery}}"
+        >
+        <button type="submit" class="search-btn">🔍 Buscar</button>
+        {{#if searchQuery}}
+            <a href="/products" class="search-clear">Limpar</a>
+        {{/if}}
+    </form>
+    {{#if searchQuery}}
+        <p class="search-info">Resultados para: <strong>{{searchQuery}}</strong></p>
+    {{/if}}
+</div>
+
+{{#if products}}
+<div class="products">
+    {{#each products}}
+    <div class="product-card">
+        <div class="product-card-media">
+            {{#if this.imageUrl}}
+            <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+            {{else}}
+            <div class="product-card-placeholder">Sem imagem</div>
+            {{/if}}
+        </div>
+
+        <div class="product-card-body">
+            <h2>{{this.name}}</h2>
+            <p class="product-card-price">Preço: {{formatCurrency this.price}}</p>
+        </div>
+
+        <a href="/products/{{this._id}}" class="btn product-card-action">Ver Detalhes</a>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="no-results">
+    <h2>Nenhum produto encontrado</h2>
+    {{#if searchQuery}}
+        <p>Nenhum produto corresponde a "<strong>{{searchQuery}}</strong>"</p>
+        <a href="/products" class="btn btn-primary">Ver todos os produtos</a>
+    {{else}}
+        <p>Nenhum produto cadastrado no sistema</p>
+        {{#if user}}
+            {{#if (isAdmin user.role)}}
+                <a href="/products/create" class="btn btn-primary">Cadastrar Produto</a>
+            {{else}}
+                <p style="color: #999;">Apenas administradores podem cadastrar produtos.</p>
+            {{/if}}
+        {{else}}
+            <p style="color: #999;"><a href="/auth/login">Faça login</a> como administrador para cadastrar produtos.</p>
+        {{/if}}
+    {{/if}}
+</div>
+{{/if}}
+
+<script>
+    // Auto-remove success alert after 4 seconds
+    const successAlert = document.getElementById('successAlert');
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.transition = 'opacity 0.3s ease';
+            successAlert.style.opacity = '0';
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 300);
+        }, 4000);
+    }
+</script>
