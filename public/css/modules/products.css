@@ -173,6 +173,8 @@
     flex: 1;
     flex-direction: column;
     gap: 12px;
+    align-items: center;
+    text-align: center;
 }
 
 .product-card h2 {
@@ -186,6 +188,7 @@
     line-clamp: 2;
     overflow: hidden;
     color: #111;
+    width: 100%;
 }
 
 .product-card-price {
