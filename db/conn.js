@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = 'mongodb://localhost:27017/testemongoose'
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/testemongoose'
 
 async function main() {
     

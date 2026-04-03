@@ -1,9 +1,10 @@
+require('dotenv').config()
 const express = require('express')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const MongoDBSession = require('connect-mongodb-session')(session)
 const conn = require('./db/conn')
-const port = 3000
+const port = process.env.PORT || 3000
 const productRoutes = require('./routes/productRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -43,13 +44,13 @@ app.set('view engine', 'hbs')
 
 // Configurar session store
 const store = new MongoDBSession({
-    uri: 'mongodb://localhost:27017/testemongoose',
+    uri: process.env.MONGODB_URI,
     collection: 'sessions'
 })
 
 // Configurar session
 app.use(session({
-    secret: 'sua_chave_secreta_aqui',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: store,
