@@ -30,8 +30,8 @@
     {{#each products}}
     <div class="product-card">
         <div class="product-card-media">
-            {{#if this.imageUrl}}
-            <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+            {{#if this.imagePath}}
+            <img src="/uploads/{{this.imagePath}}" alt="{{this.name}}" class="product-image">
             {{else}}
             <div class="product-card-placeholder">Sem imagem</div>
             {{/if}}
