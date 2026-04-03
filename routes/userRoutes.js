@@ -1,6 +1,6 @@
 const express = require('express')
 const UserController = require('../controllers/UserController')
-const upload = require('../middleware/upload')
+const upload = require('../middlewares/upload')
 const { isAuthenticated, isAdmin } = require('../middlewares/auth')
 
 const router = express.Router()
