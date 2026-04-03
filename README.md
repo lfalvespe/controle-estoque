@@ -10,6 +10,7 @@ Aplicação web fullstack desenvolvida com Node.js, Express, Handlebars e MongoD
 - **Express Session** + **connect-mongodb-session** — autenticação com sessões persistidas no MongoDB
 - **Multer** — upload de imagens de perfil
 - **bcrypt** — hash de senhas
+- **dotenv** — variáveis de ambiente
 - **nodemon** — hot reload em desenvolvimento
 
 ## Funcionalidades
@@ -62,6 +63,22 @@ git clone <url-do-repositorio>
 cd node-mongoose
 npm install
 ```
+
+## Variáveis de Ambiente
+
+Copie o arquivo de exemplo e ajuste os valores:
+
+```bash
+cp .env.example .env
+```
+
+| Variável | Descrição | Padrão |
+|---|---|---|
+| `MONGODB_URI` | URI de conexão com o MongoDB | `mongodb://localhost:27017/testemongoose` |
+| `SESSION_SECRET` | Chave secreta para assinar a sessão | — |
+| `PORT` | Porta em que o servidor será iniciado | `3000` |
+
+> Nunca versione o arquivo `.env`. Ele já está incluído no `.gitignore`.
 
 ## Uso
 
