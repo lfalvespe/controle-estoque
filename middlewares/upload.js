@@ -1,7 +1,8 @@
 const multer = require('multer');
 const path = require('path');
+const isVercel = Boolean(process.env.VERCEL)
 
-const storage = multer.diskStorage({
+const diskStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, '../public/uploads'));
   },
@@ -11,6 +12,8 @@ const storage = multer.diskStorage({
   }
 });
 
+const memoryStorage = multer.memoryStorage();
+
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image/')) {
     cb(null, true);
@@ -19,6 +22,12 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ storage, fileFilter });
+const upload = multer({
+  storage: isVercel ? memoryStorage : diskStorage,
+  fileFilter,
+  limits: {
+    fileSize: 2 * 1024 * 1024
+  }
+});
 
 module.exports = upload;

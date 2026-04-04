@@ -2,7 +2,7 @@
     <h1 class="page-title">Meu Perfil</h1>
     <div class="user-profile-card">
         {{#if user.profileImage}}
-            <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" class="user-profile-avatar">
+            <img src="{{resolveImageSrc user.profileImage}}" alt="Foto de perfil" class="user-profile-avatar">
         {{else}}
             <span class="user-profile-avatar-fallback">👤</span>
         {{/if}}

@@ -32,7 +32,7 @@
             {{#if user}}
                 <a href="/users/profile" class="navbar-profile hide-mobile">
                     {{#if user.profileImage}}
-                        <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" class="navbar-profile-avatar">
+                        <img src="{{resolveImageSrc user.profileImage}}" alt="Foto de perfil" class="navbar-profile-avatar">
                     {{else}}
                         <span class="user-avatar-fallback navbar-profile-avatar-fallback">👤</span>
                     {{/if}}

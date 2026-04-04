@@ -1,12 +1,21 @@
 const User = require('../models/User')
 
+const toStoredImageValue = (file) => {
+    if (!file) return ''
+    if (file.filename) return file.filename
+    if (file.buffer && file.mimetype) {
+        return `data:${file.mimetype};base64,${file.buffer.toString('base64')}`
+    }
+    return ''
+}
+
 class UserController {
         // Atualizar apenas a foto de perfil do próprio usuário
         async postEditOwnProfile(req, res) {
             try {
                 let updateData = {}
                 if (req.file) {
-                    updateData.profileImage = req.file.filename
+                    updateData.profileImage = toStoredImageValue(req.file)
                 }
                 if (Object.keys(updateData).length === 0) {
                     const user = await User.findById(req.session.user._id).lean();
@@ -93,7 +102,7 @@ class UserController {
             const { name, email, password, passwordConfirm, role } = req.body
             let profileImage = ''
             if (req.file) {
-                profileImage = req.file.filename
+                profileImage = toStoredImageValue(req.file)
             }
 
             // Validações
@@ -244,7 +253,7 @@ class UserController {
             const userId = req.params.id
             let updateData = { name, email, role }
             if (req.file) {
-                updateData.profileImage = req.file.filename
+                updateData.profileImage = toStoredImageValue(req.file)
             }
 
             if (!name || !email) {

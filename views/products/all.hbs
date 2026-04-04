@@ -51,7 +51,7 @@
     <div class="product-card" data-product-url="/products/{{this._id}}">
         <div class="product-card-media">
             {{#if this.imagePath}}
-            <img src="/uploads/{{this.imagePath}}" alt="{{this.name}}" class="product-image">
+            <img src="{{resolveImageSrc this.imagePath}}" alt="{{this.name}}" class="product-image">
             {{else}}
             <div class="product-card-placeholder">Sem imagem</div>
             {{/if}}

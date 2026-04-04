@@ -43,6 +43,13 @@ const hbs = exphbs.create({
         },
         eq: function(a, b) {
             return a === b;
+        },
+        resolveImageSrc: function(imageValue) {
+            if (!imageValue) return ''
+            if (imageValue.startsWith('http://') || imageValue.startsWith('https://') || imageValue.startsWith('data:')) {
+                return imageValue
+            }
+            return `/uploads/${imageValue}`
         }
     }
 })

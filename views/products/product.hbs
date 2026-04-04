@@ -14,7 +14,7 @@
     <a href="/products" class="btn btn-secondary" style="margin-bottom:18px;display:inline-block;">← Voltar para todos os produtos</a>
     <h2>{{product.name}}</h2>
     {{#if product.imagePath}}
-        <img src="/uploads/{{product.imagePath}}" alt="{{product.name}}" class="product-image">
+        <img src="{{resolveImageSrc product.imagePath}}" alt="{{product.name}}" class="product-image">
     {{/if}}     
 
     <p><strong>Categoria:</strong> {{product.category}}</p>

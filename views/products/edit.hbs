@@ -32,7 +32,7 @@
      <input type="file" id="image" name="image" accept="image/*">
      {{#if product.imagePath}}
           <p style="margin:8px 0 6px;color:#666;font-size:13px;">Imagem atual:</p>
-          <img src="/uploads/{{product.imagePath}}" alt="{{product.name}}" style="max-width:140px;max-height:140px;border-radius:8px;border:1px solid #ddd;object-fit:cover;">
+        <img src="{{resolveImageSrc product.imagePath}}" alt="{{product.name}}" style="max-width:140px;max-height:140px;border-radius:8px;border:1px solid #ddd;object-fit:cover;">
      {{/if}}
  </div>
  

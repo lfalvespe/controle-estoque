@@ -64,6 +64,20 @@ const PRODUCT_CATEGORIES = {
 
 const getCategoryNames = () => Object.keys(PRODUCT_CATEGORIES);
 
+const toStoredImageValue = (file) => {
+  if (!file) return undefined;
+  if (file.filename) return file.filename;
+  if (file.buffer && file.mimetype) {
+    return `data:${file.mimetype};base64,${file.buffer.toString('base64')}`;
+  }
+  return undefined;
+};
+
+const isLocalUploadFile = (imageValue) => {
+  if (!imageValue) return false;
+  return !imageValue.startsWith('http://') && !imageValue.startsWith('https://') && !imageValue.startsWith('data:');
+};
+
 const isValidCategorySelection = (category, subcategory) => {
   if (!category || !subcategory) return false;
   const subcategories = PRODUCT_CATEGORIES[category];
@@ -104,7 +118,7 @@ exports.createProductPost = async (req, res) => {
       name, 
       category,
       subcategory,
-      image: req.file ? req.file.filename : undefined,
+      image: toStoredImageValue(req.file),
       description, 
       price, 
       available: available === 'on' ? true : false
@@ -249,9 +263,9 @@ exports.updateProductPost = async (req, res) => {
     }
     
     if (req.file) {
-      updateData.image = req.file.filename;
+      updateData.image = toStoredImageValue(req.file);
 
-      if (existingProduct.image) {
+      if (isLocalUploadFile(existingProduct.image)) {
         const previousImagePath = path.join(__dirname, '../public/uploads', existingProduct.image);
         if (fs.existsSync(previousImagePath)) {
           fs.unlinkSync(previousImagePath);
@@ -290,7 +304,7 @@ exports.deleteProduct = async (req, res) => {
       return res.status(404).redirect('/products');
     }
 
-    if (product.image) {
+    if (isLocalUploadFile(product.image)) {
       const imagePath = path.join(__dirname, '../public/uploads', product.image);
       if (fs.existsSync(imagePath)) {
         fs.unlinkSync(imagePath);

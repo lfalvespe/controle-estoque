@@ -30,7 +30,7 @@
             <input type="file" id="profileImage" name="profileImage" accept="image/*">
             {{#if targetUser.profileImage}}
                 <div style="margin-top:8px;">
-                    <img src="/uploads/{{targetUser.profileImage}}" alt="Foto de perfil" style="max-width:90px;max-height:90px;border-radius:50%;border:1.5px solid #ccc;">
+                    <img src="{{resolveImageSrc targetUser.profileImage}}" alt="Foto de perfil" style="max-width:90px;max-height:90px;border-radius:50%;border:1.5px solid #ccc;">
                 </div>
             {{/if}}
         </div>
@@ -49,7 +49,7 @@
             <input type="file" id="profileImage" name="profileImage" accept="image/*">
             {{#if user.profileImage}}
                 <div style="margin-top:8px;">
-                    <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" style="max-width:90px;max-height:90px;border-radius:50%;border:1.5px solid #ccc;">
+                    <img src="{{resolveImageSrc user.profileImage}}" alt="Foto de perfil" style="max-width:90px;max-height:90px;border-radius:50%;border:1.5px solid #ccc;">
                 </div>
             {{/if}}
         </div>
