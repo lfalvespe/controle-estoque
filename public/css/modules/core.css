@@ -171,21 +171,21 @@ html[data-theme="dark"] footer a:hover {
 }
 
 html[data-theme="dark"] .footer-link--github {
-    background-color: rgba(15, 23, 42, 0.34);
-    border-color: rgba(148, 163, 184, 0.2);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-color: rgba(148, 163, 184, 0.28);
 }
 
 html[data-theme="dark"] .footer-link--github:hover {
-    background-color: rgba(15, 23, 42, 0.46);
+    background: linear-gradient(135deg, #0b1322 0%, #172338 100%);
 }
 
-html[data-theme="dark"] .footer-link--instagram {
-    background: linear-gradient(135deg, rgba(131, 58, 180, 0.18) 0%, rgba(225, 48, 108, 0.18) 55%, rgba(253, 29, 29, 0.14) 100%);
-    border-color: rgba(244, 114, 182, 0.18);
+html[data-theme="dark"] .footer-link--gmail {
+    background: linear-gradient(135deg, rgba(234, 67, 53, 0.52) 0%, rgba(244, 63, 94, 0.42) 55%, rgba(245, 158, 11, 0.36) 100%);
+    border-color: rgba(251, 113, 133, 0.32);
 }
 
-html[data-theme="dark"] .footer-link--instagram:hover {
-    background: linear-gradient(135deg, rgba(131, 58, 180, 0.24) 0%, rgba(225, 48, 108, 0.22) 55%, rgba(253, 29, 29, 0.18) 100%);
+html[data-theme="dark"] .footer-link--gmail:hover {
+    background: linear-gradient(135deg, rgba(234, 67, 53, 0.64) 0%, rgba(244, 63, 94, 0.5) 55%, rgba(245, 158, 11, 0.44) 100%);
 }
 
 html[data-theme="dark"] nav,
@@ -755,13 +755,15 @@ footer a {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 999px;
-    padding: 4px 11px;
+    padding: 4px 8px;
     margin: 0 3px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 13px;
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
+    gap: 6px;
     backdrop-filter: blur(4px);
 }
 
@@ -779,25 +781,42 @@ footer a:focus-visible {
 }
 
 .footer-link--github {
-    background-color: rgba(24, 23, 23, 0.18);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: linear-gradient(135deg, #171515 0%, #2b2a2a 100%);
+    border-color: rgba(255, 255, 255, 0.2);
     color: #f8fafc;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .footer-link--github:hover {
-    background-color: rgba(24, 23, 23, 0.28);
+    background: linear-gradient(135deg, #0f0f10 0%, #232327 100%);
     border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
-.footer-link--instagram {
-    background: linear-gradient(135deg, rgba(131, 58, 180, 0.2) 0%, rgba(225, 48, 108, 0.18) 55%, rgba(253, 29, 29, 0.16) 100%);
-    border-color: rgba(255, 255, 255, 0.14);
-    color: #fff7fb;
+.footer-link--gmail {
+    background: linear-gradient(135deg, #ea4335 0%, #f87171 55%, #f59e0b 100%);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(234, 67, 53, 0.24);
 }
 
-.footer-link--instagram:hover {
-    background: linear-gradient(135deg, rgba(131, 58, 180, 0.28) 0%, rgba(225, 48, 108, 0.24) 55%, rgba(253, 29, 29, 0.2) 100%);
+.footer-link--gmail:hover {
+    background: linear-gradient(135deg, #d93025 0%, #ef4444 55%, #f59e0b 100%);
     border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 8px 18px rgba(217, 48, 37, 0.32);
+}
+
+.footer-link-icon {
+    width: 13px;
+    height: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-link-icon svg {
+    width: 100%;
+    height: 100%;
 }
 
 .form-inline {
