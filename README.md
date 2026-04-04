@@ -32,7 +32,7 @@ Aplicação web fullstack desenvolvida com Node.js, Express, Handlebars e MongoD
 ## Screenshot
 
 <p align="center">
-  <img src="public/images/screenshot.png" alt="Tela de produtos no modo lista" width="900" />
+  <img src="public/images/screenshot.png" alt="Tela de produtos no modo lista" width="450" />
 </p>
 
 ## Estrutura
