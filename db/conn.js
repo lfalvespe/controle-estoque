@@ -1,19 +1,31 @@
-const mongoose = require('mongoose');
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/testemongoose'
+const mongoose = require('mongoose')
 
 mongoose.set('returnDocument', 'after')
 
-async function main() {
-    
-    try {
-       await mongoose.connect(uri)
-       console.log('Conectado ao MongoDB com Mongoose')
-    } catch (error) {
-        console.error('Erro ao conectar ao MongoDB:', error)
+let cachedConnection = null
+let cachedPromise = null
+
+async function connectDB() {
+    if (cachedConnection) {
+        return cachedConnection
     }
+
+    const uri = process.env.MONGODB_URI
+
+    if (!uri) {
+        throw new Error('MONGODB_URI nao configurada no ambiente')
+    }
+
+    if (!cachedPromise) {
+        cachedPromise = mongoose.connect(uri, {
+            serverSelectionTimeoutMS: 10000
+        })
+    }
+
+    cachedConnection = await cachedPromise
+    console.log('Conectado ao MongoDB com Mongoose')
+    return cachedConnection
 }
 
-main()
-
-module.exports = mongoose;  
+module.exports = connectDB
 

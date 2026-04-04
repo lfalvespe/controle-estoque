@@ -161,6 +161,7 @@ exports.getProducts = async (req, res) => {
       deleted
     });
   } catch (error) {
+    console.error('Get products error:', error.message)
     res.status(500).json({ error: 'Failed to fetch products' });
   }
 };

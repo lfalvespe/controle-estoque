@@ -4,7 +4,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const MongoDBSession = require('connect-mongodb-session')(session)
-const conn = require('./db/conn')
+const connectDB = require('./db/conn')
 const port = process.env.PORT || 3000
 const isVercel = Boolean(process.env.VERCEL)
 const productRoutes = require('./routes/productRoutes')
@@ -79,6 +79,25 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+
+let dbReady = false
+const ensureDbConnection = async () => {
+    if (dbReady) return
+    await connectDB()
+    dbReady = true
+}
+
+app.use(async (req, res, next) => {
+    try {
+        await ensureDbConnection()
+        next()
+    } catch (error) {
+        console.error('Erro de conexao com MongoDB:', error.message)
+        res.status(500).render('error', {
+            message: 'Erro de conexao com banco de dados. Verifique MONGODB_URI e acesso no MongoDB Atlas.'
+        })
+    }
+})
 
 // Middleware para passar usuário para o Handlebars
 app.use((req, res, next) => {
