@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
@@ -11,8 +12,13 @@ const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
 
 const app = express()
+app.set('trust proxy', 1)
+
 const hbs = exphbs.create({
-    extname: 'hbs',
+    extname: '.hbs',
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'views', 'layouts'),
+    partialsDir: path.join(__dirname, 'views', 'partials'),
     helpers: {
         isAdmin: function(role) {
             return role === 'admin';
@@ -42,6 +48,7 @@ const hbs = exphbs.create({
 })
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, 'views'))
 
 // Configurar session store
 const store = new MongoDBSession({
@@ -69,7 +76,7 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
