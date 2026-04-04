@@ -253,6 +253,62 @@
     line-height: 1.8;
 }
 
+.test-access {
+    border: 2px solid #ffd17a;
+    background: linear-gradient(140deg, #fffaf0 0%, #fff4dd 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.test-access::before {
+    content: "Acesso rapido";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    background: #f59e0b;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.test-access h2 {
+    color: #9a5a00;
+}
+
+.test-access p {
+    color: #6e4a16;
+}
+
+.test-access-credentials {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+    max-width: 420px;
+}
+
+.test-access-credentials p {
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #f1c77b;
+    background: rgba(255, 255, 255, 0.72);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.test-access-credentials span {
+    font-family: Consolas, Menlo, Monaco, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: #7a3f00;
+}
+
 .technologies {
     margin-bottom: 50px;
 }
@@ -435,6 +491,32 @@ html[data-theme="dark"] .about-project,
 html[data-theme="dark"] .features,
 html[data-theme="dark"] .next-steps {
     background-color: #23272f;
+}
+
+html[data-theme="dark"] .test-access {
+    background: linear-gradient(140deg, #2f2a1f 0%, #2b2418 100%);
+    border-color: #8f691d;
+}
+
+html[data-theme="dark"] .test-access::before {
+    background: #b7791f;
+}
+
+html[data-theme="dark"] .test-access h2 {
+    color: #ffd17a;
+}
+
+html[data-theme="dark"] .test-access p {
+    color: #e7d2a7;
+}
+
+html[data-theme="dark"] .test-access-credentials p {
+    background: rgba(23, 27, 35, 0.48);
+    border-color: #7a5c27;
+}
+
+html[data-theme="dark"] .test-access-credentials span {
+    color: #ffe5b0;
 }
 
 html[data-theme="dark"] .about-project p,
