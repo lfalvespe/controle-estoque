@@ -922,18 +922,16 @@ footer a:hover {
 
 /* Product Back Link - Specific styling after all .btn classes */
 .product-back-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 18px;
-    margin-bottom: 18px;
+    display: block;
+    width: fit-content;
+    margin: 48px auto 18px;
     padding: 10px 24px;
     border-radius: 8px;
     font-weight: 600;
     letter-spacing: 0.01em;
     background-color: var(--color-primary);
     box-shadow: 0 3px 8px var(--color-primary-shadow-medium);
+    text-align: center;
 }
 
 .product-back-link:hover {
