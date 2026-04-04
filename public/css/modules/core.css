@@ -267,6 +267,10 @@ html[data-theme="dark"] .page-title {
 
 /* ===== Ajustes Desktop da Navbar ===== */
 @media (min-width: 901px) {
+    .navbar-menu > a:first-child {
+        margin-left: 12px;
+    }
+
     .theme-toggle {
         margin-left: 18px;
     }
@@ -461,10 +465,10 @@ nav {
 }
 
 nav a {
-    font-size: 16px;
+    font-size: 15px;
     background-color: var(--color-primary);
     color: #fff;
-    padding: 12px 20px;
+    padding: 10px 16px;
     border-radius: 6px;
     transition: all 0.3s ease;
     font-weight: 500;
@@ -492,7 +496,7 @@ nav a:hover {
 
 .navbar .btn-logout {
     background-color: #dc3545;
-    padding: 12px 20px;
+    padding: 10px 16px;
 }
 
 .navbar .btn-logout:hover {
@@ -540,7 +544,7 @@ nav a:hover {
 
 .page-title {
     margin-top: 20px;
-    font-size: 2.4rem;
+    font-size: 2rem;
     margin-bottom: 32px;
     margin-left: auto;
     margin-right: auto;
@@ -614,14 +618,14 @@ footer p {
 }
 
 footer a {
-    color: var(--color-primary);
+    color: #fff;
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline;
 }
 
 footer a:hover {
-    color: var(--color-primary-hover);
+    color: #dbeeff;
     text-decoration: underline;
 }
 

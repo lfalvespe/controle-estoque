@@ -6,7 +6,7 @@
 /* ===== Contato ===== */
 .contact-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     max-width: 1000px;
     margin: var(--space-8) auto;
@@ -95,6 +95,7 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 16px;
+    justify-content: center;
 }
 
 .skill-badge {
@@ -118,7 +119,18 @@
 .characteristics-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.projects-list {
+    display: inline-block;
+    text-align: left;
+}
+
+.characteristics-list {
+    display: inline-block;
+    text-align: left;
 }
 
 .projects-list li,
@@ -126,6 +138,7 @@
     color: #555;
     font-size: 16px;
     padding: 12px 0;
+    margin-left: 0;
     line-height: 1.8;
 }
 
@@ -377,7 +390,9 @@ html[data-theme="dark"] .about-content {
 }
 
 html[data-theme="dark"] .about-section {
+    background-color: #23272f;
     border-color: #334155;
+    box-shadow: none;
 }
 
 html[data-theme="dark"] .about-section p,
