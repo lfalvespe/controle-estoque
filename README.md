@@ -9,6 +9,8 @@ Aplicação web fullstack desenvolvida com Node.js, Express, Handlebars e MongoD
 - **Express Handlebars** — templates server-side
 - **Express Session** + **connect-mongodb-session** — autenticação com sessões persistidas no MongoDB
 - **Multer** — upload de imagens de perfil e produtos
+- **Helmet** — headers de segurança e CSP
+- **express-rate-limit** — proteção contra brute force no login
 - **bcrypt** — hash de senhas
 - **dotenv** — variáveis de ambiente
 - **nodemon** — hot reload em desenvolvimento
@@ -16,17 +18,19 @@ Aplicação web fullstack desenvolvida com Node.js, Express, Handlebars e MongoD
 ## Funcionalidades
 
 - Cadastro, listagem, edição e exclusão de produtos
-- Upload de imagem por produto (arquivo)
+- Upload de imagem por produto e foto de perfil
 - Listagem de produtos com busca por nome e descrição
 - Filtros por categoria e subcategoria
 - Visualização de produtos em modo grade e lista (com preferência salva no `localStorage`)
 - Autenticação (login, logout e alteração de senha)
 - Perfis de usuário: `admin` e `user`
 - Gerenciamento de usuários (apenas admin)
-- Upload de foto de perfil
 - Alteração de senha
 - Confirmações de exclusão via modal
 - Tema claro/escuro persistido no `localStorage`
+- Proteção CSRF em formulários
+- Rate limit em tentativas de login
+- Headers de segurança com Helmet
 - Página de erro 404/500
 
 ## Screenshot
@@ -76,7 +80,8 @@ npm install
 
 | Script | Comando | Descrição |
 |---|---|---|
-| `npm start` | `nodemon ./index.js 0.0.0.0 3000` | Inicia a aplicação em modo desenvolvimento com recarga automática |
+| `npm start` | `node ./index.js 0.0.0.0 3000` | Inicia a aplicação em modo padrão |
+| `npm run dev` | `nodemon ./index.js 0.0.0.0 3000` | Inicia em desenvolvimento com recarga automática |
 
 ## Variáveis de Ambiente
 
@@ -97,7 +102,7 @@ cp .env.example .env
 Exemplos de `MONGODB_URI`:
 
 - Local: `mongodb://localhost:27017/testemongoose`
-- Atlas: `mongodb+srv://usuario:senha@cluster.mongodb.net/?appName=Cluster0`
+- Atlas: `mongodb+srv://usuario:senha@cluster.mongodb.net/controleestoque?retryWrites=true&w=majority&appName=Cluster0`
 
 ## Uso
 
@@ -144,13 +149,20 @@ Na primeira execução, um usuário administrador padrão é criado automaticame
 
 ### ⚠️ Notas Importantes
 
-- **Uploads de arquivos**: Os arquivos enviados (imagens de perfil e produtos) são armazenados em `public/uploads/`. Em Vercel, isso é efêmero e será perdido após redeploy. Para produção, considere usar:
+- **Uploads de arquivos**:
+  - Local: arquivos em `public/uploads/`
+  - Vercel: imagens salvas em Base64 no MongoDB (compatível com filesystem efêmero)
+  - Limite atual de upload: 2MB por arquivo
+  - Para produção em escala, considere usar armazenamento dedicado:
   - AWS S3
   - Google Cloud Storage
   - Cloudinary
   - ou outro serviço de armazenamento em nuvem
 
-- **Primeira execução**: A criação do admin padrão ocorrerá na primeira execução. Não será possível em Vercel após redeploy (use um serviço de storage ou banco de dados para persistência).
+- **Primeira execução**: O admin padrão é criado automaticamente se não existir nenhum usuário admin:
+  - E-mail: `admin@example.com`
+  - Senha: `admin123`
+  - Troque a senha imediatamente após o primeiro login.
 
 - **Comandos locais**:
   - `npm start` — Production (sem reload automático)
