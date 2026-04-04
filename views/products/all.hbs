@@ -15,13 +15,27 @@
             placeholder="Buscar por nome ou descrição..." 
             value="{{searchQuery}}"
         >
+        <select name="category" id="filter-category" class="search-input">
+            <option value="">Todas as categorias</option>
+            {{#each categories}}
+                <option value="{{this}}" {{#if (eq this ../selectedCategory)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+        </select>
+        <select name="subcategory" id="filter-subcategory" class="search-input">
+            <option value="">Todas as subcategorias</option>
+        </select>
         <button type="submit" class="search-btn">🔍 Buscar</button>
-        {{#if searchQuery}}
+        {{#if hasFilters}}
             <a href="/products" class="search-clear">Limpar</a>
         {{/if}}
     </form>
-    {{#if searchQuery}}
-        <p class="search-info">Resultados para: <strong>{{searchQuery}}</strong></p>
+    {{#if hasFilters}}
+        <p class="search-info">
+            Filtros:
+            {{#if searchQuery}}<strong>texto:</strong> {{searchQuery}}{{/if}}
+            {{#if selectedCategory}} | <strong>categoria:</strong> {{selectedCategory}}{{/if}}
+            {{#if selectedSubcategory}} | <strong>subcategoria:</strong> {{selectedSubcategory}}{{/if}}
+        </p>
     {{/if}}
 </div>
 
@@ -49,8 +63,8 @@
 {{else}}
 <div class="no-results">
     <h2>Nenhum produto encontrado</h2>
-    {{#if searchQuery}}
-        <p>Nenhum produto corresponde a "<strong>{{searchQuery}}</strong>"</p>
+    {{#if hasFilters}}
+        <p>Não encontramos produtos com os filtros selecionados.</p>
         <a href="/products" class="btn btn-primary">Ver todos os produtos</a>
     {{else}}
         <p>Nenhum produto cadastrado no sistema</p>
@@ -79,4 +93,41 @@
             }, 300);
         }, 4000);
     }
+</script>
+
+<script>
+    const categoryMap = {{{categoryMapJson}}};
+    const selectedCategory = '{{selectedCategory}}';
+    const selectedSubcategory = '{{selectedSubcategory}}';
+    const categorySelect = document.getElementById('filter-category');
+    const subcategorySelect = document.getElementById('filter-subcategory');
+
+    function fillSubcategories(category, selectedValue) {
+        subcategorySelect.innerHTML = '';
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Todas as subcategorias';
+        subcategorySelect.appendChild(defaultOption);
+
+        if (!category || !categoryMap[category]) {
+            return;
+        }
+
+        categoryMap[category].forEach((subcategory) => {
+            const option = document.createElement('option');
+            option.value = subcategory;
+            option.textContent = subcategory;
+            if (subcategory === selectedValue) {
+                option.selected = true;
+            }
+            subcategorySelect.appendChild(option);
+        });
+    }
+
+    categorySelect.addEventListener('change', () => {
+        fillSubcategories(categorySelect.value, '');
+    });
+
+    fillSubcategories(selectedCategory, selectedSubcategory);
 </script>

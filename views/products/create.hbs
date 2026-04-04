@@ -1,9 +1,30 @@
 <h1 class="page-title">Cadastrar</h1>
 
+{{#if message}}
+<div class="alert alert-danger">{{message}}</div>
+{{/if}}
+
 <form action="/products/create" method="POST" class="product-form" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Nome do Produto:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" value="{{formData.name}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Categoria:</label>
+        <select id="category" name="category" required>
+            <option value="">Selecione uma categoria</option>
+            {{#each categories}}
+                <option value="{{this}}" {{#if (eq this ../formData.category)}}selected{{/if}}>{{this}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="subcategory">Subcategoria:</label>
+        <select id="subcategory" name="subcategory" required>
+            <option value="">Selecione uma subcategoria</option>
+        </select>
     </div>
 
 
@@ -14,17 +35,54 @@
 
     <div class="form-group">
         <label for="description">Descrição:</label>
-        <textarea id="description" name="description" required></textarea>
+        <textarea id="description" name="description" required>{{formData.description}}</textarea>
     </div>
 
     <div class="form-group">
             
         <label for="price">Preço:</label>
-        <input type="number" id="price" name="price" step="0.01" required>
+        <input type="number" id="price" name="price" step="0.01" value="{{formData.price}}" required>
     </div>
     <div class="form-group">
         <label for="available">Disponível:</label>
-        <input type="checkbox" id="available" name="available">
+        <input type="checkbox" id="available" name="available" {{#if formData.available}}checked{{/if}}>
     </div>      
     <button type="submit" class="btn">Cadastrar</button>
-</form>                
+</form>
+
+<script>
+    const categoryMap = {{{categoryMapJson}}};
+    const selectedCategory = '{{formData.category}}';
+    const selectedSubcategory = '{{formData.subcategory}}';
+    const categorySelect = document.getElementById('category');
+    const subcategorySelect = document.getElementById('subcategory');
+
+    function fillSubcategories(category, selectedValue) {
+        subcategorySelect.innerHTML = '';
+
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Selecione uma subcategoria';
+        subcategorySelect.appendChild(defaultOption);
+
+        if (!category || !categoryMap[category]) {
+            return;
+        }
+
+        categoryMap[category].forEach((subcategory) => {
+            const option = document.createElement('option');
+            option.value = subcategory;
+            option.textContent = subcategory;
+            if (subcategory === selectedValue) {
+                option.selected = true;
+            }
+            subcategorySelect.appendChild(option);
+        });
+    }
+
+    categorySelect.addEventListener('change', () => {
+        fillSubcategories(categorySelect.value, '');
+    });
+
+    fillSubcategories(selectedCategory, selectedSubcategory);
+</script>
