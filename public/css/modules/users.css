@@ -20,24 +20,35 @@
     margin-bottom: var(--space-7);
 }
 
+.users-header .btn-primary,
+.user-form .btn-primary,
+.user-profile-actions .btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 2px 6px var(--color-primary-shadow-medium);
+}
+
+.users-header .btn-primary:hover,
+.user-form .btn-primary:hover,
+.user-profile-actions .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--color-primary-shadow-strong);
+}
+
 .users-header .btn-primary {
     display: inline-block;
     padding: var(--space-3) var(--space-6);
-    background-color: var(--color-primary);
-    color: #fff;
     text-decoration: none;
     border-radius: var(--radius-sm);
     font-size: 15px;
     font-weight: 600;
     line-height: 1;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 6px var(--color-primary-shadow-medium);
 }
 
 .users-header .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--color-primary-shadow-strong);
+    text-decoration: none;
 }
 
 /* ===== Tabela de Usuarios ===== */
@@ -231,14 +242,11 @@
 }
 
 .user-form .btn-primary {
-    background-color: var(--color-primary);
-    box-shadow: 0 2px 6px var(--color-primary-shadow-medium);
+    text-decoration: none;
 }
 
 .user-form .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--color-primary-shadow-strong);
+    text-decoration: none;
 }
 
 .user-form .btn-secondary {
@@ -321,15 +329,11 @@
 }
 
 .user-profile-actions .btn-primary {
-    background-color: var(--color-primary);
-    color: #fff;
-    box-shadow: 0 2px 6px var(--color-primary-shadow-medium);
+    text-decoration: none;
 }
 
 .user-profile-actions .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--color-primary-shadow-strong);
+    text-decoration: none;
 }
 
 .user-profile-actions .btn-secondary {

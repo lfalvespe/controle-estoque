@@ -3,6 +3,36 @@
  * Escopo: paginas institucionais (home, about, contact).
  */
 
+/* ===== Pagina de Erro ===== */
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.error-box {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+}
+
+.error-box h1 {
+    color: #dc3545;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.error-box p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
 /* ===== Contato ===== */
 .contact-container {
     display: grid;
