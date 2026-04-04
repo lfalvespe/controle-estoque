@@ -762,6 +762,7 @@ footer p {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-top: 6px;
 }
 
 .footer-sep {
