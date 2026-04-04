@@ -192,34 +192,18 @@
 }
 
 .hero {
+    background: transparent !important;
     padding: 8px 0 0;
     text-align: center;
     margin-bottom: 28px;
+    box-shadow: none;
 }
 
-.hero p {
+.hero > p {
     color: #555;
     font-size: 18px;
     margin-bottom: 20px;
     line-height: 1.8;
-}
-
-.hero .btn {
-    display: inline-block;
-    padding: 12px 28px;
-    background-color: var(--color-primary);
-    color: #fff;
-    font-weight: 600;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.hero .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px var(--color-primary-shadow-elevated);
 }
 
 .about-project {
@@ -243,11 +227,38 @@
     line-height: 1.8;
 }
 
+.about-project-plain {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 0 4px 18px;
+    border-left: 2px solid var(--color-primary-shadow-medium);
+    margin-top: -12px;
+}
+
+.about-project-plain h2 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.about-project-plain h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 72px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 999px;
+}
+
 .test-access {
     border: 2px solid #ffd17a;
     background: linear-gradient(140deg, #fffaf0 0%, #fff4dd 100%);
     position: relative;
     overflow: hidden;
+    margin-top: 44px;
 }
 
 .test-access-login-btn {
@@ -300,19 +311,29 @@
     margin-top: 14px;
     display: grid;
     gap: 10px;
-    max-width: 420px;
+    width: 420px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .test-access-credentials p {
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
     padding: 10px 14px;
     border-radius: 8px;
     border: 1px solid #f1c77b;
     background: rgba(255, 255, 255, 0.72);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+}
+
+.test-access-credentials p strong {
+    min-width: 70px;
+    text-align: left;
 }
 
 .test-access-credentials span {
@@ -506,6 +527,16 @@ html[data-theme="dark"] .next-steps {
     background-color: #23272f;
 }
 
+html[data-theme="dark"] .about-project-plain {
+    background: transparent;
+    box-shadow: none;
+    border-left-color: #5f7fa6;
+}
+
+html[data-theme="dark"] .about-project-plain h2::after {
+    background: #7cb5ff;
+}
+
 html[data-theme="dark"] .test-access {
     background: linear-gradient(140deg, #2f2a1f 0%, #2b2418 100%);
     border-color: #8f691d;
@@ -548,6 +579,7 @@ html[data-theme="dark"] .test-access-credentials span {
 }
 
 html[data-theme="dark"] .about-project p,
+html[data-theme="dark"] .hero > p,
 html[data-theme="dark"] .features-list li,
 html[data-theme="dark"] .steps-list li {
     color: #a0aec0;
