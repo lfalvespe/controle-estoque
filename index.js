@@ -79,7 +79,7 @@ app.use(session({
 
 // Middleware CSP permissivo para desenvolvimento
 app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' https: http:; connect-src *")
+    res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; connect-src *")
     next()
 })
 
