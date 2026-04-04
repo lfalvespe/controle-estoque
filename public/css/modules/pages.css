@@ -264,22 +264,38 @@
     position: absolute;
     top: 14px;
     right: 14px;
-    font-size: 12px;
-    letter-spacing: 0.4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 88px;
+    font-size: 13px;
+    letter-spacing: 0.6px;
     text-transform: uppercase;
     background: #f59e0b;
     color: #fff;
-    padding: 6px 12px;
+    padding: 8px 14px;
+    border: 1px solid #c97a00;
     border-radius: 999px;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .test-access-login-btn:hover {
     background: #d97706;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(217, 119, 6, 0.45);
+}
+
+.test-access-login-btn:active {
+    transform: translateY(0);
+}
+
+.test-access-login-btn:focus-visible {
+    outline: 3px solid rgba(245, 158, 11, 0.35);
+    outline-offset: 2px;
 }
 
 .test-access h2 {
@@ -507,10 +523,13 @@ html[data-theme="dark"] .test-access {
 
 html[data-theme="dark"] .test-access-login-btn {
     background: #b7791f;
+    border-color: #e0a84f;
+    box-shadow: 0 4px 10px rgba(183, 121, 31, 0.45);
 }
 
 html[data-theme="dark"] .test-access-login-btn:hover {
     background: #975a16;
+    box-shadow: 0 6px 14px rgba(151, 90, 22, 0.55);
 }
 
 html[data-theme="dark"] .test-access h2 {
