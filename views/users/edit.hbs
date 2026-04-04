@@ -36,11 +36,11 @@
             {{/if}}
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn-primary">Atualizar Usuário</button>
+            <button type="submit" class="btn btn-primary">Atualizar Usuário</button>
             {{#if (eq targetUser.role "user")}}
-                <a href="/users/{{targetUser._id}}/change-password" class="btn-secondary">Alterar Senha</a>
+                <a href="/users/{{targetUser._id}}/change-password" class="btn btn-secondary">Alterar Senha</a>
             {{/if}}
-            <a href="/users" class="btn-secondary">Voltar</a>
+            <a href="/users" class="btn btn-secondary">Voltar</a>
         </div>
     </form>
     {{else}}
@@ -56,8 +56,8 @@
             {{/if}}
         </div>
         <div class="form-actions">
-            <button type="submit" class="btn-primary">Atualizar Foto</button>
-            <a href="/users/profile" class="btn-secondary">Voltar</a>
+            <button type="submit" class="btn btn-primary">Atualizar Foto</button>
+            <a href="/users/profile" class="btn btn-secondary">Voltar</a>
         </div>
     </form>
     {{/if}}

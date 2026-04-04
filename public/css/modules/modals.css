@@ -1,0 +1,116 @@
+/*
+ * Modulo: modals.css
+ * Escopo: estilos de modais e diálogos.
+ */
+
+/* ===== Modal Overlay ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* ===== Modal Content ===== */
+.modal-content {
+    background-color: #fff;
+    padding: 38px 26px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    width: min(90vw, 420px);
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-bottom: 14px;
+    font-size: 1.4rem;
+    color: #b23c3c;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-content h3::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #f8d7da;
+    color: #b23c3c;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.modal-content p {
+    margin-bottom: 28px;
+    line-height: 1.65;
+    color: #333;
+}
+
+/* ===== Modal Actions ===== */
+.modal-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-actions .btn {
+    min-width: 140px;
+}
+
+.modal-actions .btn-danger {
+    box-shadow: 0 6px 14px rgba(220, 53, 69, 0.25);
+}
+
+.modal-actions .btn-secondary {
+    background-color: transparent;
+    color: #5f6b7a;
+    border: 1px solid #c7d0db;
+    box-shadow: none;
+}
+
+.modal-actions .btn-secondary:hover {
+    background-color: #eef2f6;
+    color: #334155;
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+
+/* ===== Dark Theme Modal ===== */
+html[data-theme="dark"] .modal-content {
+    background-color: #23272f;
+    color: #e3e3e3;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .modal-content p {
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .modal-content h3::before {
+    background-color: rgba(178, 60, 60, 0.2);
+    color: #ff9d9d;
+}
+
+html[data-theme="dark"] .modal-actions .btn-secondary {
+    background-color: transparent;
+    color: #c7d0db;
+    border-color: #4b5563;
+}
+
+html[data-theme="dark"] .modal-actions .btn-secondary:hover {
+    background-color: #2f3742;
+    color: #f3f4f6;
+}

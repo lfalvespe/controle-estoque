@@ -14,9 +14,9 @@
 
 .error-box {
     background: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: var(--space-8);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
     text-align: center;
     max-width: 500px;
 }
@@ -49,7 +49,7 @@
     border-radius: var(--radius-lg);
     padding: var(--space-7) var(--space-6);
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
 }
 
@@ -83,6 +83,128 @@
     text-decoration: underline;
 }
 
+/* ===== Skills Grid e Badges ===== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border: none;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.skill-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    filter: brightness(1.1);
+}
+
+/* HTML5 - Laranja/Vermelho */
+.skill-badge--html5 {
+    background: linear-gradient(135deg, #E34C26 0%, #F16529 100%);
+}
+
+/* CSS3 - Azul */
+.skill-badge--css3 {
+    background: linear-gradient(135deg, #1572B6 0%, #33A9DC 100%);
+}
+
+/* Bootstrap - Roxo */
+.skill-badge--bootstrap {
+    background: linear-gradient(135deg, #7952B3 0%, #9F7AEA 100%);
+}
+
+/* SASS - Rosa */
+.skill-badge--sass {
+    background: linear-gradient(135deg, #CC6699 0%, #DD91BB 100%);
+}
+
+/* JavaScript - Amarelo */
+.skill-badge--javascript {
+    background: linear-gradient(135deg, #F7DF1E 0%, #FCDC33 100%);
+    color: #333;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.skill-badge--javascript:hover {
+    color: #000;
+}
+
+/* React.js - Ciano */
+.skill-badge--react {
+    background: linear-gradient(135deg, #61DAFB 0%, #88E6F8 100%);
+    color: #0288D1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.skill-badge--react:hover {
+    color: #0277BD;
+}
+
+/* Node.js - Verde */
+.skill-badge--nodejs {
+    background: linear-gradient(135deg, #339933 0%, #6ABF59 100%);
+}
+
+/* Express.js - Cinza/Preto */
+.skill-badge--express {
+    background: linear-gradient(135deg, #404040 0%, #686868 100%);
+}
+
+/* MongoDB - Verde Esmeralda */
+.skill-badge--mongodb {
+    background: linear-gradient(135deg, #13AA52 0%, #2BBD5E 100%);
+}
+
+/* Mongoose - Marrom/Bronzeado */
+.skill-badge--mongoose {
+    background: linear-gradient(135deg, #8B6914 0%, #C9A661 100%);
+}
+
+/* Python - Azul */
+.skill-badge--python {
+    background: linear-gradient(135deg, #3776AB 0%, #4B8BBE 100%);
+}
+
+/* MySQL - Azul Turquesa Escuro */
+.skill-badge--mysql {
+    background: linear-gradient(135deg, #00758F 0%, #00A4EF 100%);
+}
+
+/* Sequelize - Azul Claro */
+.skill-badge--sequelize {
+    background: linear-gradient(135deg, #4169E1 0%, #6495ED 100%);
+}
+
+/* Handlebars - Laranja */
+.skill-badge--handlebars {
+    background: linear-gradient(135deg, #F0772B 0%, #F5945C 100%);
+}
+
+/* Dark Theme Skills */
+html[data-theme="dark"] .skill-badge {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="dark"] .skill-badge:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
 /* ===== Sobre ===== */
 .about-container {
     max-width: 900px;
@@ -93,7 +215,7 @@
 .about-content {
     background-color: #fff;
     border-radius: var(--radius-lg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
 }
 
@@ -118,6 +240,59 @@
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 10px;
+}
+
+.about-section .about-location {
+    margin-top: 0;
+    margin-bottom: 22px;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.about-section .about-location strong {
+    font-weight: 500;
+}
+
+.about-section .about-intro {
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    border-left: 3px solid var(--color-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: linear-gradient(90deg, var(--color-primary-shadow-subtle) 0%, rgba(255, 255, 255, 0) 100%);
+    color: #3f4c5d;
+}
+
+.about-section .about-principles {
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    letter-spacing: 0.015em;
+    color: #526172;
+    font-style: italic;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    text-wrap: pretty;
+}
+
+.about-section .about-principles::before {
+    content: "\201C";
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 1.15em;
+    line-height: 1;
+    color: rgba(94, 167, 240, 0.75);
+    vertical-align: baseline;
+}
+
+.about-section .about-principles::after {
+    content: "\201D";
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 1.15em;
+    line-height: 1;
+    color: rgba(94, 167, 240, 0.75);
+    vertical-align: baseline;
 }
 
 .skills-grid {
@@ -161,15 +336,24 @@
 .characteristics-list {
     display: inline-block;
     text-align: left;
+    margin-top: 24px;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(94, 167, 240, 0.35);
+    box-shadow: inset 0 12px 18px -18px rgba(94, 167, 240, 0.65);
 }
 
 .projects-list li,
 .characteristics-list li {
     color: #555;
     font-size: 16px;
-    padding: 12px 0;
+    padding: 7px 0;
     margin-left: 0;
     line-height: 1.8;
+}
+
+.characteristics-list li {
+    padding: 3px 0;
+    line-height: 1.45;
 }
 
 .projects-list li:before {
@@ -206,11 +390,17 @@
     line-height: 1.8;
 }
 
-.about-project {
+.about-project,
+.features,
+.next-steps {
     background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 50px;
+}
+
+.about-project {
     margin-bottom: 50px;
 }
 
@@ -322,7 +512,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 10px 14px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     border: 1px solid #f1c77b;
     background: rgba(255, 255, 255, 0.72);
     display: flex;
@@ -405,14 +595,6 @@
     line-height: 1.6;
 }
 
-.features {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
-}
-
 .features h2 {
     color: var(--color-primary);
     font-size: 28px;
@@ -439,14 +621,6 @@
 
 .features-list li:last-child {
     border-bottom: none;
-}
-
-.next-steps {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 50px;
 }
 
 .next-steps h2 {
@@ -509,6 +683,11 @@ html[data-theme="dark"] .about-content {
     background-color: #23272f;
 }
 
+html[data-theme="dark"] .characteristics-list {
+    border-top-color: rgba(125, 183, 242, 0.45);
+    box-shadow: inset 0 12px 18px -18px rgba(125, 183, 242, 0.7);
+}
+
 html[data-theme="dark"] .about-section {
     background-color: #23272f;
     border-color: #334155;
@@ -519,6 +698,28 @@ html[data-theme="dark"] .about-section p,
 html[data-theme="dark"] .projects-list li,
 html[data-theme="dark"] .characteristics-list li {
     color: #a0aec0;
+}
+
+html[data-theme="dark"] .about-section .about-intro {
+    color: #d6dee9;
+    background: linear-gradient(90deg, rgba(94, 167, 240, 0.12) 0%, rgba(94, 167, 240, 0.02) 100%);
+    border-left-color: #7db7f2;
+}
+
+html[data-theme="dark"] .about-section .about-principles {
+    color: #c8d4e2;
+}
+
+html[data-theme="dark"] .about-section .about-principles::before {
+    color: rgba(125, 183, 242, 0.78);
+}
+
+html[data-theme="dark"] .about-section .about-principles::after {
+    color: rgba(125, 183, 242, 0.78);
+}
+
+html[data-theme="dark"] .about-section .about-location strong {
+    color: #cbd5e1;
 }
 
 html[data-theme="dark"] .about-project,

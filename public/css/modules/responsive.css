@@ -170,6 +170,11 @@
         padding: 6px 12px;
     }
 
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+    }
+
     .product-card {
         width: min(92vw, 340px);
         max-width: 340px;

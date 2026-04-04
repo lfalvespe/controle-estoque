@@ -3,6 +3,8 @@
  * Mantem a ordem de importacao para preservar a prioridade das regras.
  */
 @import url('./modules/core.css');
+@import url('./modules/modals.css');
+@import url('./modules/forms.css');
 @import url('./modules/products.css');
 @import url('./modules/pages.css');
 @import url('./modules/auth.css');

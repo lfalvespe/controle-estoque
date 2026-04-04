@@ -1,6 +1,7 @@
 /*
  * Modulo: auth.css
- * Escopo: telas e componentes de autenticacao.
+ * Escopo: telas e componentes de autenticacao (específicos de auth).
+ * Nota: Form-group e button styles consolidados em forms.css
  */
 
 /* ===== Autenticacao ===== */
@@ -16,7 +17,7 @@
     background: white;
     padding: var(--space-8);
     border-radius: var(--radius-md);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
     width: 100%;
     max-width: 400px;
 }
@@ -28,76 +29,22 @@
     font-size: 28px;
 }
 
-.auth-box .form-group {
-    margin-bottom: var(--space-5);
-}
-
-.auth-box .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-    font-weight: 600;
-}
-
-.auth-box .form-group input {
+.auth-box form > .btn {
     width: 100%;
-    padding: var(--space-3);
-    border: 1px solid #ddd;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    transition: border-color 0.3s;
+    justify-content: center;
+    margin-top: var(--space-2);
 }
 
-.auth-box .form-group input:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
-}
-
-.auth-box .form-group small {
-    display: block;
-    color: #999;
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-.auth-box .btn-primary,
-.auth-box .btn-secondary {
-    padding: var(--space-3) var(--space-6);
-    color: white;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-}
-
-.auth-box .btn-primary {
-    background-color: var(--color-primary);
-}
-
-.auth-box .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-}
-
-.auth-box .btn-secondary {
-    margin-left: 10px;
-}
-
-.form-actions-group {
+/* ===== Form Actions Group (Auth-specific layout) ===== */
+.auth-box .form-actions-group {
     display: flex;
     gap: 10px;
     margin-top: var(--space-5);
     align-items: stretch;
 }
 
-.form-actions-group button,
-.form-actions-group a {
+.auth-box .form-actions-group button,
+.auth-box .form-actions-group a {
     flex: 1;
     text-align: center;
     margin-top: 0;
@@ -111,33 +58,10 @@
     box-sizing: border-box;
 }
 
-.auth-box .form-actions-group .btn-primary {
-    background-color: var(--color-primary);
-    color: #fff;
-    box-shadow: 0 2px 6px var(--color-primary-shadow-medium);
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-}
-
 .auth-box .form-actions-group .btn-primary,
 .auth-box .form-actions-group .btn-secondary {
     margin: 0;
     line-height: 1;
-}
-
-.auth-box .form-actions-group .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px var(--color-primary-shadow-strong);
-}
-
-.auth-box .form-actions-group .btn-secondary {
-    background-color: #6c757d;
-    color: #fff;
-}
-
-.auth-box .form-actions-group .btn-secondary:hover {
-    background-color: #5a6268;
-    transform: translateY(-2px);
 }
 
 .auth-link {
@@ -164,20 +88,6 @@ html[data-theme="dark"] .auth-box {
 
 html[data-theme="dark"] .auth-box h2 {
     color: #e3e3e3;
-}
-
-html[data-theme="dark"] .auth-box .form-group label {
-    color: #a0aec0;
-}
-
-html[data-theme="dark"] .auth-box .form-group input {
-    background-color: #1e2127;
-    border-color: #3a4050;
-    color: #e3e3e3;
-}
-
-html[data-theme="dark"] .auth-box .form-group small {
-    color: #a0aec0;
 }
 
 html[data-theme="dark"] .auth-link {

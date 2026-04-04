@@ -10,8 +10,9 @@
 </div>
 {{/if}}
 
+<a href="/products" class="btn btn-primary product-back-link">Todos os Produtos</a>
+
 <div class="product-details">
-    <a href="/products" class="btn btn-secondary product-back-link">← Voltar para todos os produtos</a>
     <h2>{{product.name}}</h2>
     {{#if product.imagePath}}
         <img src="{{resolveImageSrc product.imagePath}}" alt="{{product.name}}" class="product-image">
