@@ -192,35 +192,25 @@
 }
 
 .hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
-    color: #fff;
-    padding: 60px 40px;
-    border-radius: 10px;
+    padding: 8px 0 0;
     text-align: center;
-    margin-bottom: 50px;
-    box-shadow: 0 8px 20px var(--color-primary-shadow-medium);
-}
-
-.hero h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-    font-weight: 700;
+    margin-bottom: 28px;
 }
 
 .hero p {
+    color: #555;
     font-size: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 1.8;
-    opacity: 0.95;
 }
 
 .hero .btn {
     display: inline-block;
-    padding: 14px 40px;
-    background-color: #fff;
-    color: var(--color-primary);
+    padding: 12px 28px;
+    background-color: var(--color-primary);
+    color: #fff;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -229,7 +219,7 @@
 
 .hero .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px var(--color-primary-shadow-elevated);
 }
 
 .about-project {
