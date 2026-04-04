@@ -17,12 +17,15 @@ Aplicação web fullstack desenvolvida com Node.js, Express, Handlebars e MongoD
 
 - Cadastro, listagem, edição e exclusão de produtos
 - Upload de imagem por produto (arquivo)
-- Listagem de produtos com busca por nome
-- Autenticação (login, logout, registro)
+- Listagem de produtos com busca por nome e descrição
+- Filtros por categoria e subcategoria
+- Visualização de produtos em modo grade e lista (com preferência salva no `localStorage`)
+- Autenticação (login, logout e alteração de senha)
 - Perfis de usuário: `admin` e `user`
 - Gerenciamento de usuários (apenas admin)
 - Upload de foto de perfil
 - Alteração de senha
+- Confirmações de exclusão via modal
 - Tema claro/escuro persistido no `localStorage`
 - Página de erro 404/500
 
@@ -62,6 +65,12 @@ git clone <url-do-repositorio>
 cd node-mongoose
 npm install
 ```
+
+## Scripts
+
+| Script | Comando | Descrição |
+|---|---|---|
+| `npm start` | `nodemon ./index.js 0.0.0.0 3000` | Inicia a aplicação em modo desenvolvimento com recarga automática |
 
 ## Variáveis de Ambiente
 
