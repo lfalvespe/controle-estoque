@@ -1,17 +1,17 @@
-<div class="users-container" style="max-width:400px;margin:0 auto;">
+<div class="users-container user-profile-container">
     <h1 class="page-title">Meu Perfil</h1>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:18px;">
+    <div class="user-profile-card">
         {{#if user.profileImage}}
-            <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:2px solid var(--color-primary);">
+            <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" class="user-profile-avatar">
         {{else}}
-            <span style="width:90px;height:90px;display:flex;align-items:center;justify-content:center;background:#e0e7ef;border-radius:50%;font-size:2.5rem;color:var(--color-primary);border:2px solid var(--color-primary);">👤</span>
+            <span class="user-profile-avatar-fallback">👤</span>
         {{/if}}
-        <span style="font-size:1.2rem;font-weight:700;">{{user.name}}</span>
-        <span style="color:#555;font-size:1rem;">{{user.email}}</span>
-        <span style="color:#888;font-size:0.95rem;">Tipo: {{#if (eq user.role 'admin')}}Administrador{{else}}Usuário{{/if}}</span>
+        <span class="user-profile-name">{{user.name}}</span>
+        <span class="user-profile-email">{{user.email}}</span>
+        <span class="user-profile-role">Tipo: {{#if (eq user.role 'admin')}}Administrador{{else}}Usuário{{/if}}</span>
     </div>
-    <div style="display:flex;flex-direction:column;gap:12px;align-items:center;">
-        <a href="/users/profile/edit" class="btn-primary" style="width:100%;max-width:220px;">Alterar Foto e Dados</a>
-        <a href="/auth/change-password" class="btn-secondary" style="width:100%;max-width:220px;">Alterar Senha</a>
+    <div class="user-profile-actions">
+        <a href="/users/profile/edit" class="btn-primary profile-btn">Alterar Foto e Dados</a>
+        <a href="/auth/change-password" class="btn-secondary profile-btn">Alterar Senha</a>
     </div>
 </div>

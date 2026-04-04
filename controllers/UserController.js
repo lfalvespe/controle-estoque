@@ -147,7 +147,11 @@ class UserController {
                 })
             }
 
-            res.render('users/edit', { user, passwordUpdated })
+            res.render('users/edit', {
+                targetUser: user,
+                passwordUpdated,
+                currentUserId: req.session.user._id.toString()
+            })
         } catch (error) {
             console.error(error)
             res.status(500).render('error', {
@@ -173,7 +177,7 @@ class UserController {
                 })
             }
 
-            res.render('users/change-password', { user })
+            res.render('users/change-password', { targetUser: user })
         } catch (error) {
             console.error(error)
             res.status(500).render('error', {
@@ -202,21 +206,21 @@ class UserController {
 
             if (!newPassword || !passwordConfirm) {
                 return res.status(400).render('users/change-password', {
-                    user: { _id: user._id.toString(), name: user.name, email: user.email, role: user.role },
+                    targetUser: { _id: user._id.toString(), name: user.name, email: user.email, role: user.role },
                     message: 'Por favor informe e confirme a nova senha'
                 })
             }
 
             if (newPassword.length < 6) {
                 return res.status(400).render('users/change-password', {
-                    user: { _id: user._id.toString(), name: user.name, email: user.email, role: user.role },
+                    targetUser: { _id: user._id.toString(), name: user.name, email: user.email, role: user.role },
                     message: 'A nova senha deve ter no mínimo 6 caracteres'
                 })
             }
 
             if (newPassword !== passwordConfirm) {
                 return res.status(400).render('users/change-password', {
-                    user: { _id: user._id.toString(), name: user.name, email: user.email, role: user.role },
+                    targetUser: { _id: user._id.toString(), name: user.name, email: user.email, role: user.role },
                     message: 'As senhas não coincidem'
                 })
             }
@@ -258,7 +262,8 @@ class UserController {
             if (existingUser) {
                 const user = await User.findById(userId)
                 return res.status(400).render('users/edit', {
-                    user,
+                    targetUser: user,
+                    currentUserId: req.session.user._id.toString(),
                     message: 'Este email já está em uso'
                 })
             }

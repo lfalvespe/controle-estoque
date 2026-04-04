@@ -8,7 +8,41 @@
         <div class="alert alert-success">Senha do usuário alterada com sucesso!</div>
     {{/if}}
 
-    {{#if (eq user._id currentUserId)}}
+    {{#if targetUser}}
+    <form method="POST" action="/users/{{targetUser._id}}/edit" class="user-form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="{{targetUser.name}}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{targetUser.email}}" required>
+        </div>
+        <div class="form-group">
+            <label for="role">Tipo de Usuário:</label>
+            <select id="role" name="role">
+                <option value="user" {{#if (eq targetUser.role "user")}}selected{{/if}}>Usuário Padrão</option>
+                <option value="admin" {{#if (eq targetUser.role "admin")}}selected{{/if}}>Administrador</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="profileImage">Foto de Perfil:</label>
+            <input type="file" id="profileImage" name="profileImage" accept="image/*">
+            {{#if targetUser.profileImage}}
+                <div style="margin-top:8px;">
+                    <img src="/uploads/{{targetUser.profileImage}}" alt="Foto de perfil" style="max-width:90px;max-height:90px;border-radius:50%;border:1.5px solid #ccc;">
+                </div>
+            {{/if}}
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">Atualizar Usuário</button>
+            {{#if (eq targetUser.role "user")}}
+                <a href="/users/{{targetUser._id}}/change-password" class="btn-secondary">Alterar Senha</a>
+            {{/if}}
+            <a href="/users" class="btn-secondary">Voltar</a>
+        </div>
+    </form>
+    {{else}}
     <form method="POST" action="/users/profile/edit" class="user-form" enctype="multipart/form-data">
         <div class="form-group">
             <label for="profileImage">Foto de Perfil:</label>
@@ -22,40 +56,6 @@
         <div class="form-actions">
             <button type="submit" class="btn-primary">Atualizar Foto</button>
             <a href="/users/profile" class="btn-secondary">Voltar</a>
-        </div>
-    </form>
-    {{else}}
-    <form method="POST" action="/users/{{user._id}}/edit" class="user-form" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" value="{{user.name}}" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="{{user.email}}" required>
-        </div>
-        <div class="form-group">
-            <label for="role">Tipo de Usuário:</label>
-            <select id="role" name="role">
-                <option value="user" {{#if (eq user.role "user")}}selected{{/if}}>Usuário Padrão</option>
-                <option value="admin" {{#if (eq user.role "admin")}}selected{{/if}}>Administrador</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="profileImage">Foto de Perfil:</label>
-            <input type="file" id="profileImage" name="profileImage" accept="image/*">
-            {{#if user.profileImage}}
-                <div style="margin-top:8px;">
-                    <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" style="max-width:90px;max-height:90px;border-radius:50%;border:1.5px solid #ccc;">
-                </div>
-            {{/if}}
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn-primary">Atualizar Usuário</button>
-            {{#if (eq user.role "user")}}
-                <a href="/users/{{user._id}}/change-password" class="btn-secondary">Alterar Senha</a>
-            {{/if}}
-            <a href="/users" class="btn-secondary">Voltar</a>
         </div>
     </form>
     {{/if}}

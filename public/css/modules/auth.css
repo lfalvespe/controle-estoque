@@ -109,6 +109,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.auth-box .form-actions-group .btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 2px 6px var(--color-primary-shadow-medium);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-box .form-actions-group .btn-primary,
+.auth-box .form-actions-group .btn-secondary {
+    margin: 0;
+    line-height: 1;
+}
+
+.auth-box .form-actions-group .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px var(--color-primary-shadow-strong);
+}
+
+.auth-box .form-actions-group .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.auth-box .form-actions-group .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
 }
 
 .auth-link {
