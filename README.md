@@ -29,6 +29,12 @@ Aplicação web fullstack desenvolvida com Node.js, Express, Handlebars e MongoD
 - Tema claro/escuro persistido no `localStorage`
 - Página de erro 404/500
 
+## Screenshot
+
+<p align="center">
+  <img src="public/images/screenshot.png" alt="Tela de produtos no modo lista" width="900" />
+</p>
+
 ## Estrutura
 
 ```
