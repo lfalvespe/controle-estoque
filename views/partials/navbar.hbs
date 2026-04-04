@@ -30,13 +30,13 @@
         <a href="/contact">Contato</a>
         <div class="nav-auth">
             {{#if user}}
-                <a href="/users/profile" class="navbar-profile hide-mobile" style="display:flex;flex-direction:column;align-items:center;margin-right:12px;text-decoration:none;cursor:pointer;">
+                <a href="/users/profile" class="navbar-profile hide-mobile">
                     {{#if user.profileImage}}
-                        <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid var(--color-primary);">
+                        <img src="/uploads/{{user.profileImage}}" alt="Foto de perfil" class="navbar-profile-avatar">
                     {{else}}
-                        <span class="user-avatar-fallback" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#e0e7ef;border-radius:50%;font-size:1.7rem;color:var(--color-primary);border:1.5px solid var(--color-primary);">👤</span>
+                        <span class="user-avatar-fallback navbar-profile-avatar-fallback">👤</span>
                     {{/if}}
-                    <span class="user-profile-name" style="font-size:13px;font-weight:600;margin-top:2px;max-width:70px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{user.name}}</span>
+                    <span class="user-profile-name navbar-profile-name">{{user.name}}</span>
                 </a>
                 <a href="/auth/logout" class="btn-logout">Sair</a>
             {{else}}

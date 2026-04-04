@@ -36,6 +36,36 @@
     box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
 }
 
+.search-form select.search-input {
+    appearance: none;
+    cursor: pointer;
+    padding-right: 44px;
+    background-color: #fff;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #738096 50%),
+        linear-gradient(135deg, #738096 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.search-form select.search-input:hover {
+    border-color: #c7d2e2;
+}
+
+.search-form select.search-input:focus {
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+        linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+}
+
+.search-form select.search-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
 .search-btn {
     padding: 12px 24px;
     background-color: var(--color-primary);
@@ -255,15 +285,53 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product-form select,
+.edit-form select {
+    width: 100%;
+    padding: 12px 44px 12px 14px;
+    box-sizing: border-box;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #333;
+    background-color: #fff;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #738096 50%),
+        linear-gradient(135deg, #738096 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.product-form select:hover,
+.edit-form select:hover {
+    border-color: #c7d2e2;
+}
+
 .product-form input[type="text"]:focus,
 .product-form input[type="number"]:focus,
 .product-form textarea:focus,
+.product-form select:focus,
 .edit-form input[type="text"]:focus,
 .edit-form input[type="number"]:focus,
-.edit-form textarea:focus {
+.edit-form textarea:focus,
+.edit-form select:focus {
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
+}
+
+.product-form select:focus,
+.edit-form select:focus {
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+        linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
 }
 
 .product-form textarea,
@@ -278,6 +346,51 @@
     width: 18px;
     height: 18px;
     cursor: pointer;
+}
+
+.product-form input[type="file"],
+.edit-form input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 2px dashed #cfd8e5;
+    border-radius: 8px;
+    background-color: #f8fbff;
+    color: #4a5668;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.product-form input[type="file"]:hover,
+.edit-form input[type="file"]:hover {
+    border-color: #a6bddb;
+    background-color: #f0f7ff;
+}
+
+.product-form input[type="file"]:focus,
+.edit-form input[type="file"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
+}
+
+.product-form input[type="file"]::file-selector-button,
+.edit-form input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    border: 0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.product-form input[type="file"]::file-selector-button:hover,
+.edit-form input[type="file"]::file-selector-button:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
 }
 
 .product-form .btn {
@@ -300,6 +413,27 @@
 html[data-theme="dark"] .search-input {
     background-color: #1e2127;
     border-color: #3a4050;
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .search-form select.search-input {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #b8c2d1 50%),
+        linear-gradient(135deg, #b8c2d1 50%, transparent 50%);
+}
+
+html[data-theme="dark"] .search-form select.search-input:hover {
+    border-color: #50617d;
+}
+
+html[data-theme="dark"] .search-form select.search-input:focus {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #7ec0ff 50%),
+        linear-gradient(135deg, #7ec0ff 50%, transparent 50%);
+}
+
+html[data-theme="dark"] .search-form select.search-input option {
+    background-color: #1e2127;
     color: #e3e3e3;
 }
 
@@ -353,5 +487,46 @@ html[data-theme="dark"] .edit-form textarea {
     background-color: #1e2127;
     border-color: #3a4050;
     color: #e3e3e3;
+}
+
+html[data-theme="dark"] .product-form select,
+html[data-theme="dark"] .edit-form select {
+    background-color: #1e2127;
+    border-color: #3a4050;
+    color: #e3e3e3;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #b8c2d1 50%),
+        linear-gradient(135deg, #b8c2d1 50%, transparent 50%);
+}
+
+html[data-theme="dark"] .product-form select:hover,
+html[data-theme="dark"] .edit-form select:hover {
+    border-color: #50617d;
+}
+
+html[data-theme="dark"] .product-form select:focus,
+html[data-theme="dark"] .edit-form select:focus {
+    background-image:
+        linear-gradient(45deg, transparent 50%, #7ec0ff 50%),
+        linear-gradient(135deg, #7ec0ff 50%, transparent 50%);
+}
+
+html[data-theme="dark"] .product-form select option,
+html[data-theme="dark"] .edit-form select option {
+    background-color: #1e2127;
+    color: #e3e3e3;
+}
+
+html[data-theme="dark"] .product-form input[type="file"],
+html[data-theme="dark"] .edit-form input[type="file"] {
+    background-color: #1b2230;
+    border-color: #3b4a63;
+    color: #d5dfef;
+}
+
+html[data-theme="dark"] .product-form input[type="file"]:hover,
+html[data-theme="dark"] .edit-form input[type="file"]:hover {
+    border-color: #56739e;
+    background-color: #202b3d;
 }
 

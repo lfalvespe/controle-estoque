@@ -61,10 +61,9 @@
     margin-top: 4px;
 }
 
-.auth-box button,
+.auth-box .btn-primary,
 .auth-box .btn-secondary {
     padding: var(--space-3) var(--space-6);
-    background-color: var(--color-primary);
     color: white;
     border: none;
     border-radius: var(--radius-sm);
@@ -78,17 +77,16 @@
     font-size: 14px;
 }
 
-.auth-box button:hover {
+.auth-box .btn-primary {
+    background-color: var(--color-primary);
+}
+
+.auth-box .btn-primary:hover {
     background-color: var(--color-primary-hover);
 }
 
 .auth-box .btn-secondary {
-    background-color: #6c757d;
     margin-left: 10px;
-}
-
-.auth-box .btn-secondary:hover {
-    background-color: #5a6268;
 }
 
 .form-actions-group {

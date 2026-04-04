@@ -79,6 +79,28 @@
         gap: 0;
     }
 
+    .navbar-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .navbar-brand-logo {
+        height: 24px;
+    }
+
+    .navbar-brand-title {
+        line-height: 1;
+        text-align: center;
+    }
+
     .navbar-left,
     .navbar-right {
         flex: 0 0 auto;
