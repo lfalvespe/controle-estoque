@@ -756,6 +756,7 @@ footer p {
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
+    margin-top: 14px;
 }
 
 .footer-links {
@@ -767,6 +768,10 @@ footer p {
 
 .footer-sep {
     opacity: 0.75;
+}
+
+.footer-copyright {
+    margin-top: 18px;
 }
 
 footer a {
@@ -855,6 +860,10 @@ footer a:focus-visible {
         justify-content: center;
         gap: 6px;
         width: 100%;
+    }
+
+    .footer-copyright {
+        margin-top: 14px;
     }
 }
 
