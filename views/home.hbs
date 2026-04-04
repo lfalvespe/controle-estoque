@@ -2,14 +2,14 @@
 
 <div class="home-container">
     <section class="hero">
-        <h2>Gerenciamento de Produtos com Node.js</h2>
-        <p>Uma aplicação web moderna para gerenciar catálogos de produtos com banco NoSQL robusto, autenticação por sessão e interface responsiva.</p>
+        <h2>Controle de Estoque com Node.js</h2>
+        <p>Aplicacao web full-stack para gerenciar produtos e usuarios com autenticacao por sessao, upload de imagens e interface responsiva.</p>
         <a href="/products" class="btn btn-primary">Acessar Produtos</a>
     </section>
 
     <section class="about-project">
         <h2>Sobre Este Projeto</h2>
-        <p>Este projeto foi desenvolvido como exemplo prático de uma aplicação web full-stack com Node.js no backend. A aplicação oferece CRUD completo de produtos, gerenciamento de usuários por perfil e melhorias de UX como modais de confirmação e visualização em grade/lista.</p>
+        <p>Projeto desenvolvido para consolidar praticas de backend e frontend com Node.js, Express, Handlebars e MongoDB. A aplicacao oferece CRUD completo de produtos, gestao de usuarios por perfil (admin/user), persistencia de sessao no MongoDB e deploy em ambiente serverless na Vercel.</p>
     </section>
 
     <section class="technologies">
@@ -66,7 +66,25 @@
             <div class="tech-card">
                 <div class="tech-icon">🖼️</div>
                 <h3>Multer</h3>
-                <p>Upload e gerenciamento de imagens de perfil dos usuários</p>
+                <p>Upload de imagens de perfil e produtos</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🛡️</div>
+                <h3>Helmet + CSRF</h3>
+                <p>Headers de seguranca e protecao contra requisicoes forjadas</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">🚦</div>
+                <h3>Rate Limit</h3>
+                <p>Limitacao de tentativas de login para reduzir brute force</p>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-icon">▲</div>
+                <h3>Vercel</h3>
+                <p>Deploy em producao com runtime serverless</p>
             </div>
 
             <div class="tech-card">
@@ -84,7 +102,7 @@
             <div class="tech-card">
                 <div class="tech-icon">👀</div>
                 <h3>Nodemon</h3>
-                <p>Ferramenta de desenvolvimento para autoreload do servidor</p>
+                <p>Utilizado no ambiente local para desenvolvimento com autoreload</p>
             </div>
         </div>
     </section>
@@ -92,34 +110,30 @@
     <section class="features">
         <h2>✨ Funcionalidades</h2>
         <ul class="features-list">
-            <li>✅ Criar novos produtos com nome, descrição, preço e disponibilidade</li>
-            <li>✅ Visualizar listagem de produtos com busca por texto e filtros por categoria/subcategoria</li>
-            <li>✅ Alternar visualização dos produtos entre modo grade e modo lista</li>
-            <li>✅ Visualizar detalhes de um produto específico</li>
-            <li>✅ Editar informações de produtos existentes</li>
-            <li>✅ Deletar produtos do banco de dados</li>
-            <li>✅ Confirmação de exclusão com modal (produtos e usuários)</li>
-            <li>✅ Interface responsiva que funciona em todos os dispositivos</li>
-            <li>✅ Validação de formulários no backend</li>
-            <li>✅ Sistema de login, logout, alteração de senha e controle de permissões por perfil</li>
-            <li>✅ Gerenciamento de usuários por administradores</li>
-            <li>✅ Alteração de senha de usuários padrão pelo administrador</li>
-            <li>✅ Upload de foto de perfil e edição de perfil do usuário logado</li>
-            <li>✅ Tema claro/escuro com preferência persistida no navegador</li>
-            <li>✅ Tratamento robusto de erros</li>
+            <li>✅ CRUD completo de produtos com categoria, subcategoria, disponibilidade e preco</li>
+            <li>✅ Listagem com busca por texto e filtros por categoria/subcategoria</li>
+            <li>✅ Modo de visualizacao em grade/lista com preferencia salva no navegador</li>
+            <li>✅ Upload de imagem para produtos e foto de perfil de usuarios</li>
+            <li>✅ Login, logout, alteracao de senha e controle de acesso por perfil</li>
+            <li>✅ Gerenciamento de usuarios por administradores, incluindo alteracao de senha</li>
+            <li>✅ Confirmacao de exclusao com modal para produtos e usuarios</li>
+            <li>✅ Tema claro/escuro com persistencia local</li>
+            <li>✅ Persistencia de sessao no MongoDB com expiracao de cookie</li>
+            <li>✅ Protecao CSRF, rate limit no login e headers de seguranca com Helmet</li>
+            <li>✅ Tratamento de erros 404/500 com interface dedicada</li>
         </ul>
     </section>
 
     <section class="next-steps">
         <h2>🚀 Como Começar</h2>
         <ol class="steps-list">
-            <li>Navegue até <strong>Produtos</strong> para ver o catálogo</li>
-            <li>Use a busca, os filtros e o seletor <strong>Grade/Lista</strong> para explorar os itens</li>
-            <li>Faça login para acessar ações administrativas e gerenciamento de usuários</li>
-            <li>Clique em <strong>Cadastrar Produto</strong> para adicionar um novo produto</li>
-            <li>Clique em qualquer produto para visualizar seus detalhes</li>
-            <li>Use os botões <strong>Editar</strong> e <strong>Excluir</strong> para gerenciar produtos</li>
-            <li>Em <strong>Gerenciar Usuários</strong>, admins podem editar contas e alterar senha de usuários padrão</li>
+            <li>Acesse <strong>Produtos</strong> para navegar no catalogo</li>
+            <li>Use busca, filtros e o seletor <strong>Grade/Lista</strong> para localizar itens</li>
+            <li>Faca login para liberar as acoes administrativas</li>
+            <li>Crie ou edite produtos com imagem, categoria e disponibilidade</li>
+            <li>Acesse <strong>Gerenciar Usuarios</strong> para criar contas e ajustar permissoes</li>
+            <li>Atualize seu perfil em <strong>Meu Perfil</strong> com foto e dados</li>
+            <li>Em producao, acompanhe os deploys e variaveis de ambiente na Vercel</li>
         </ol>
     </section>
 </div>
