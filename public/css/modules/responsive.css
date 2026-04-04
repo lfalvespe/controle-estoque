@@ -127,12 +127,20 @@
     }
 
     footer {
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        width: 100vw;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
+        border-top: 3px solid var(--color-primary);
         margin-top: 30px;
         margin-bottom: 0;
+        margin-left: -10px;
+        margin-right: -10px;
+        width: calc(100% + 20px);
         padding: 20px 15px;
+        box-sizing: border-box;
+    }
+
+    html[data-theme="dark"] footer {
+        background: linear-gradient(135deg, #23272f 0%, #181a1b 100%);
+        border-top: 3px solid #222b3a;
     }
 
     footer h3 {
@@ -310,3 +318,4 @@
         align-items: center;
         justify-content: center;
     }
+}

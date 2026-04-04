@@ -225,11 +225,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
+.product-form .form-group,
+.edit-form .form-group {
     margin-bottom: 22px;
 }
 
-label {
+.product-form label,
+.edit-form label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
@@ -237,10 +239,12 @@ label {
     font-size: 15px;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="url"],
-textarea {
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form textarea,
+.edit-form input[type="text"],
+.edit-form input[type="number"],
+.edit-form textarea {
     width: 100%;
     padding: 12px 14px;
     box-sizing: border-box;
@@ -251,21 +255,25 @@ textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="url"]:focus,
-textarea:focus {
+.product-form input[type="text"]:focus,
+.product-form input[type="number"]:focus,
+.product-form textarea:focus,
+.edit-form input[type="text"]:focus,
+.edit-form input[type="number"]:focus,
+.edit-form textarea:focus {
     outline: none;
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
 }
 
-textarea {
+.product-form textarea,
+.edit-form textarea {
     resize: vertical;
     min-height: 120px;
 }
 
-input[type="checkbox"] {
+.product-form input[type="checkbox"],
+.edit-form input[type="checkbox"] {
     margin-right: 10px;
     width: 18px;
     height: 18px;
@@ -331,14 +339,17 @@ html[data-theme="dark"] .edit-form {
     background-color: #23272f;
 }
 
-html[data-theme="dark"] label {
+html[data-theme="dark"] .product-form label,
+html[data-theme="dark"] .edit-form label {
     color: #e3e3e3;
 }
 
-html[data-theme="dark"] input[type="text"],
-html[data-theme="dark"] input[type="number"],
-html[data-theme="dark"] input[type="url"],
-html[data-theme="dark"] textarea {
+html[data-theme="dark"] .product-form input[type="text"],
+html[data-theme="dark"] .product-form input[type="number"],
+html[data-theme="dark"] .product-form textarea,
+html[data-theme="dark"] .edit-form input[type="text"],
+html[data-theme="dark"] .edit-form input[type="number"],
+html[data-theme="dark"] .edit-form textarea {
     background-color: #1e2127;
     border-color: #3a4050;
     color: #e3e3e3;

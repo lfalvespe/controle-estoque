@@ -6,25 +6,25 @@
 /* ===== Gerenciamento de Usuarios ===== */
 .users-container {
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: var(--space-8) auto;
+    padding: 0 var(--space-5);
 }
 
 .users-container h2 {
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: var(--space-7);
     font-size: 28px;
 }
 
 .users-header {
-    margin-bottom: 30px;
+    margin-bottom: var(--space-7);
 }
 
 /* ===== Tabela de Usuarios ===== */
 .users-table-container {
     overflow-x: auto;
     background: white;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -106,14 +106,14 @@
 .user-form {
     max-width: 500px;
     background: white;
-    padding: 40px;
-    border-radius: 8px;
+    padding: var(--space-8);
+    border-radius: var(--radius-md);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 30px auto;
+    margin: var(--space-7) auto;
 }
 
 .user-form .form-group {
-    margin-bottom: 20px;
+    margin-bottom: var(--space-5);
 }
 
 .user-form .form-group label {
@@ -126,9 +126,9 @@
 .user-form .form-group input,
 .user-form .form-group select {
     width: 100%;
-    padding: 12px;
+    padding: var(--space-3);
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 14px;
     transition: border-color 0.3s;
 }
@@ -140,18 +140,18 @@
     box-shadow: 0 0 0 3px var(--color-primary-shadow-soft);
 }
 
-.form-actions {
+.user-form .form-actions {
     display: flex;
     gap: 10px;
-    margin-top: 30px;
+    margin-top: var(--space-7);
 }
 
-.btn-primary,
-.btn-secondary {
+.user-form .btn-primary,
+.user-form .btn-secondary {
     flex: 1;
-    padding: 12px 24px;
+    padding: var(--space-3) var(--space-6);
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -160,12 +160,12 @@
     display: inline-block;
 }
 
-.btn-secondary {
+.user-form .btn-secondary {
     background-color: #6c757d;
     color: white;
 }
 
-.btn-secondary:hover {
+.user-form .btn-secondary:hover {
     background-color: #5a6268;
 }
 
