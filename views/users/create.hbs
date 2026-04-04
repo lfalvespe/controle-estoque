@@ -5,7 +5,8 @@
         <div class="alert alert-danger">{{message}}</div>
     {{/if}}
 
-    <form method="POST" action="/users/create" class="user-form" enctype="multipart/form-data">
+    <form method="POST" action="/users/create?_csrf={{csrfToken}}" class="user-form" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <div class="form-group">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>

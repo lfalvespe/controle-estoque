@@ -37,6 +37,7 @@
         {{#if (isAdmin user.role)}}
             <a href="/products/edit/{{product._id}}" class="btn btn-primary">Editar</a>
             <form id="deleteProductForm" action="/products/delete/{{product._id}}" method="POST" class="form-inline">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <button type="button" class="btn btn-danger open-delete-modal" data-delete-form="deleteProductForm" data-item-type="o produto" data-item-name="{{product.name}}">Excluir</button>
             </form>
         {{/if}}

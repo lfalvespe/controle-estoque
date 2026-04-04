@@ -9,7 +9,8 @@
     {{/if}}
 
     {{#if targetUser}}
-    <form method="POST" action="/users/{{targetUser._id}}/edit" class="user-form" enctype="multipart/form-data">
+    <form method="POST" action="/users/{{targetUser._id}}/edit?_csrf={{csrfToken}}" class="user-form" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <div class="form-group">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" value="{{targetUser.name}}" required>
@@ -43,7 +44,8 @@
         </div>
     </form>
     {{else}}
-    <form method="POST" action="/users/profile/edit" class="user-form" enctype="multipart/form-data">
+    <form method="POST" action="/users/profile/edit?_csrf={{csrfToken}}" class="user-form" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <div class="form-group">
             <label for="profileImage">Foto de Perfil:</label>
             <input type="file" id="profileImage" name="profileImage" accept="image/*">

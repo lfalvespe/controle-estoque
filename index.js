@@ -1,7 +1,9 @@
 require('dotenv').config()
+const crypto = require('crypto')
 const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
+const helmet = require('helmet')
 const session = require('express-session')
 const MongoDBSession = require('connect-mongodb-session')(session)
 const connectDB = require('./db/conn')
@@ -77,15 +79,53 @@ app.use(session({
     }
 }))
 
-// Middleware CSP permissivo para desenvolvimento
-app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https: http:; connect-src *")
-    next()
-})
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            scriptSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", 'data:', 'https:', 'http:'],
+            connectSrc: ["'self'", 'https:', 'http:'],
+            objectSrc: ["'none'"],
+            baseUri: ["'self'"],
+            frameAncestors: ["'none'"]
+        }
+    },
+    crossOriginEmbedderPolicy: false
+}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+
+const csrfSafeMethods = new Set(['GET', 'HEAD', 'OPTIONS'])
+
+const getOrCreateCsrfToken = (req) => {
+    if (!req.session.csrfToken) {
+        req.session.csrfToken = crypto.randomBytes(32).toString('hex')
+    }
+    return req.session.csrfToken
+}
+
+app.use((req, res, next) => {
+    res.locals.csrfToken = getOrCreateCsrfToken(req)
+    next()
+})
+
+app.use((req, res, next) => {
+    if (csrfSafeMethods.has(req.method)) return next()
+
+    const tokenFromRequest = req.query._csrf || req.body?._csrf || req.get('x-csrf-token')
+
+    if (!tokenFromRequest || tokenFromRequest !== req.session.csrfToken) {
+        return res.status(403).render('error', {
+            message: 'Token CSRF invalido. Recarregue a pagina e tente novamente.'
+        })
+    }
+
+    next()
+})
 
 let dbReady = false
 let bootstrapPromise = null

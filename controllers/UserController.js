@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const ALLOWED_ROLES = new Set(['user', 'admin'])
 
 const toStoredImageValue = (file) => {
     if (!file) return ''
@@ -99,7 +100,11 @@ class UserController {
     // Criar novo usuário (admin)
     async postCreateUser(req, res) {
         try {
-            const { name, email, password, passwordConfirm, role } = req.body
+            const name = typeof req.body.name === 'string' ? req.body.name.trim() : ''
+            const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : ''
+            const password = typeof req.body.password === 'string' ? req.body.password : ''
+            const passwordConfirm = typeof req.body.passwordConfirm === 'string' ? req.body.passwordConfirm : ''
+            const role = ALLOWED_ROLES.has(req.body.role) ? req.body.role : 'user'
             let profileImage = ''
             if (req.file) {
                 profileImage = toStoredImageValue(req.file)
@@ -118,6 +123,12 @@ class UserController {
                 })
             }
 
+            if (password.length < 6) {
+                return res.status(400).render('users/create', {
+                    message: 'A senha deve ter no mínimo 6 caracteres'
+                })
+            }
+
             // Verificar se email existe
             const user = await User.findOne({ email })
             if (user) {
@@ -131,7 +142,7 @@ class UserController {
                 name,
                 email,
                 password,
-                role: role || 'user',
+                role,
                 profileImage
             })
 
@@ -249,7 +260,9 @@ class UserController {
     // Atualizar usuário (admin)
     async postEditUser(req, res) {
         try {
-            const { name, email, role } = req.body
+            const name = typeof req.body.name === 'string' ? req.body.name.trim() : ''
+            const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : ''
+            const role = ALLOWED_ROLES.has(req.body.role) ? req.body.role : 'user'
             const userId = req.params.id
             let updateData = { name, email, role }
             if (req.file) {

@@ -96,7 +96,12 @@ exports.createProduct = async (req, res) => {
 // Create a new product
 exports.createProductPost = async (req, res) => {
   try {
-    const { name, category, subcategory, description, price, available } = req.body;
+    const name = typeof req.body.name === 'string' ? req.body.name.trim() : '';
+    const category = typeof req.body.category === 'string' ? req.body.category.trim() : '';
+    const subcategory = typeof req.body.subcategory === 'string' ? req.body.subcategory.trim() : '';
+    const description = typeof req.body.description === 'string' ? req.body.description.trim() : '';
+    const priceRaw = Number(req.body.price);
+    const available = req.body.available;
     
     // Verificar se o usuário é admin
     if (!req.session.user || req.session.user.role !== 'admin') {
@@ -114,13 +119,22 @@ exports.createProductPost = async (req, res) => {
       });
     }
 
+    if (!name || !description || !Number.isFinite(priceRaw) || priceRaw < 0) {
+      return res.status(400).render('products/create', {
+        message: 'Preencha nome, descricao e um preco valido.',
+        categories: getCategoryNames(),
+        categoryMapJson: JSON.stringify(PRODUCT_CATEGORIES),
+        formData: { name, category, subcategory, description, price: req.body.price, available }
+      });
+    }
+
     const product = new Product({ 
       name, 
       category,
       subcategory,
       image: toStoredImageValue(req.file),
       description, 
-      price, 
+      price: priceRaw,
       available: available === 'on' ? true : false
     });                                                             
     await product.save();     
@@ -231,7 +245,12 @@ exports.updateProductPost = async (req, res) => {
       });
     }
 
-    const { name, category, subcategory, description, price, available } = req.body;
+    const name = typeof req.body.name === 'string' ? req.body.name.trim() : '';
+    const category = typeof req.body.category === 'string' ? req.body.category.trim() : '';
+    const subcategory = typeof req.body.subcategory === 'string' ? req.body.subcategory.trim() : '';
+    const description = typeof req.body.description === 'string' ? req.body.description.trim() : '';
+    const priceRaw = Number(req.body.price);
+    const available = req.body.available;
     
     const existingProduct = await Product.findById(req.params.id);
     if (!existingProduct) {
@@ -243,9 +262,25 @@ exports.updateProductPost = async (req, res) => {
       category,
       subcategory,
       description, 
-      price, 
+      price: priceRaw,
       available: available === 'on' ? true : false
     };
+
+    if (!name || !description || !Number.isFinite(priceRaw) || priceRaw < 0) {
+      const productForView = {
+        ...existingProduct.toObject(),
+        ...updateData,
+        price: req.body.price,
+        imagePath: existingProduct.image || existingProduct.imageUrl
+      };
+
+      return res.status(400).render('products/edit', {
+        product: productForView,
+        message: 'Preencha nome, descricao e um preco valido.',
+        categories: getCategoryNames(),
+        categoryMapJson: JSON.stringify(PRODUCT_CATEGORIES)
+      });
+    }
 
     if (!isValidCategorySelection(category, subcategory)) {
       const productForView = {

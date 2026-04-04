@@ -10,10 +10,11 @@ class AuthController {
     // Fazer login
     async postLogin(req, res) {
         try {
-            const { email, password } = req.body
+            const email = typeof req.body.email === 'string' ? req.body.email.trim().toLowerCase() : ''
+            const password = typeof req.body.password === 'string' ? req.body.password : ''
             const redirect = req.body.redirect || '/'
 
-            if (!email || !password) {
+            if (!email || !password || password.length < 6) {
                 return res.status(400).render('auth/login', {
                     message: 'Por favor forneça email e senha',
                     redirect
