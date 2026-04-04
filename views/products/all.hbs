@@ -25,6 +25,12 @@
             <option value="">Todas as subcategorias</option>
         </select>
         <button type="submit" class="search-btn">🔍 Buscar</button>
+        {{#if products}}
+            <div class="products-view-controls" aria-label="Modo de visualizacao dos produtos">
+                <button type="button" class="view-toggle-btn is-active" data-view="grid">Grade</button>
+                <button type="button" class="view-toggle-btn" data-view="list">Lista</button>
+            </div>
+        {{/if}}
         {{#if hasFilters}}
             <a href="/products" class="search-clear">Limpar</a>
         {{/if}}
@@ -40,9 +46,9 @@
 </div>
 
 {{#if products}}
-<div class="products">
+    <div class="products" id="productsContainer">
     {{#each products}}
-    <div class="product-card">
+    <div class="product-card" data-product-url="/products/{{this._id}}">
         <div class="product-card-media">
             {{#if this.imagePath}}
             <img src="/uploads/{{this.imagePath}}" alt="{{this.name}}" class="product-image">
@@ -53,10 +59,9 @@
 
         <div class="product-card-body">
             <h2>{{this.name}}</h2>
-            <p class="product-card-price">Preço: {{formatCurrency this.price}}</p>
+            <p class="product-card-price">{{formatCurrency this.price}}</p>
+            <a href="/products/{{this._id}}" class="btn product-card-action">Ver Detalhes</a>
         </div>
-
-        <a href="/products/{{this._id}}" class="btn product-card-action">Ver Detalhes</a>
     </div>
     {{/each}}
 </div>
@@ -130,4 +135,55 @@
     });
 
     fillSubcategories(selectedCategory, selectedSubcategory);
+
+    const productsContainer = document.getElementById('productsContainer');
+    const viewToggleButtons = document.querySelectorAll('.view-toggle-btn');
+    const productsViewStorageKey = 'productsViewMode';
+
+    function applyProductsView(viewMode) {
+        if (!productsContainer) return;
+
+        productsContainer.classList.toggle('products-view-list', viewMode === 'list');
+        productsContainer.classList.toggle('products-view-grid', viewMode === 'grid');
+
+        viewToggleButtons.forEach((button) => {
+            const isCurrent = button.dataset.view === viewMode;
+            button.classList.toggle('is-active', isCurrent);
+            button.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
+        });
+    }
+
+    if (productsContainer && viewToggleButtons.length) {
+        const savedViewMode = localStorage.getItem(productsViewStorageKey);
+        const initialViewMode = savedViewMode === 'list' ? 'list' : 'grid';
+
+        applyProductsView(initialViewMode);
+
+        viewToggleButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const nextViewMode = button.dataset.view === 'list' ? 'list' : 'grid';
+                localStorage.setItem(productsViewStorageKey, nextViewMode);
+                applyProductsView(nextViewMode);
+            });
+        });
+    }
+
+    if (productsContainer) {
+        productsContainer.addEventListener('click', (event) => {
+            const actionButton = event.target.closest('.product-card-action');
+            if (actionButton) return;
+
+            const isMobile = window.matchMedia('(max-width: 600px)').matches;
+            const isListMode = productsContainer.classList.contains('products-view-list');
+            if (!isMobile || !isListMode) return;
+
+            const card = event.target.closest('.product-card[data-product-url]');
+            if (!card) return;
+
+            const productUrl = card.dataset.productUrl;
+            if (productUrl) {
+                window.location.href = productUrl;
+            }
+        });
+    }
 </script>
