@@ -260,8 +260,7 @@
     overflow: hidden;
 }
 
-.test-access::before {
-    content: "Acesso rapido";
+.test-access-login-btn {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -270,9 +269,17 @@
     text-transform: uppercase;
     background: #f59e0b;
     color: #fff;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 999px;
     font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.test-access-login-btn:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .test-access h2 {
@@ -498,8 +505,12 @@ html[data-theme="dark"] .test-access {
     border-color: #8f691d;
 }
 
-html[data-theme="dark"] .test-access::before {
+html[data-theme="dark"] .test-access-login-btn {
     background: #b7791f;
+}
+
+html[data-theme="dark"] .test-access-login-btn:hover {
+    background: #975a16;
 }
 
 html[data-theme="dark"] .test-access h2 {
@@ -517,6 +528,14 @@ html[data-theme="dark"] .test-access-credentials p {
 
 html[data-theme="dark"] .test-access-credentials span {
     color: #ffe5b0;
+}
+
+@media (max-width: 600px) {
+    .test-access-login-btn {
+        position: static;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
 }
 
 html[data-theme="dark"] .about-project p,
