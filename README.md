@@ -115,3 +115,43 @@ Na primeira execução, um usuário administrador padrão é criado automaticame
 | Senha | admin123 |
 
 > Altere a senha após o primeiro acesso.
+
+## Deploy (Vercel)
+
+### Pré-requisitos
+
+- Conta no [Vercel](https://vercel.com/)
+- MongoDB Atlas configurado (com conexão remota ativada)
+- Repositório no GitHub, GitLab ou Bitbucket
+
+### Passos
+
+1. **Conecte seu repositório ao Vercel**
+   - Entre em [vercel.com/dashboard](https://vercel.com/dashboard)
+   - Clique em "Add New" → "Project"
+   - Selecione seu repositório
+
+2. **Configure as variáveis de ambiente**
+   - Na página do projeto, acesse "Settings" → "Environment Variables"
+   - Adicione as variáveis:
+     - `MONGODB_URI`: sua connection string do MongoDB Atlas
+     - `SESSION_SECRET`: uma chave segura (ex: resultado de `openssl rand -hex 32`)
+     - `NODE_ENV`: `production` (opcional, já definido em vercel.json)
+
+3. **Deploy**
+   - O Vercel fará deploy automaticamente no push para a branch principal
+   - Ou clique em "Deploy Now" para deploy manual
+
+### ⚠️ Notas Importantes
+
+- **Uploads de arquivos**: Os arquivos enviados (imagens de perfil e produtos) são armazenados em `public/uploads/`. Em Vercel, isso é efêmero e será perdido após redeploy. Para produção, considere usar:
+  - AWS S3
+  - Google Cloud Storage
+  - Cloudinary
+  - ou outro serviço de armazenamento em nuvem
+
+- **Primeira execução**: A criação do admin padrão ocorrerá na primeira execução. Não será possível em Vercel após redeploy (use um serviço de storage ou banco de dados para persistência).
+
+- **Comandos locais**:
+  - `npm start` — Production (sem reload automático)
+  - `npm run dev` — Desenvolvimento (com nodemon)
