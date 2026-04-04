@@ -48,7 +48,7 @@
                                 {{#if (eq role "user")}}
                                     <a href="/users/{{_id}}/change-password" class="btn-small">Alterar Senha</a>
                                 {{/if}}
-                                <a href="/users/{{_id}}/delete" class="btn-small btn-delete" onclick="return confirm('Tem certeza?')">Deletar</a>
+                                <button type="button" class="btn-small btn-delete open-delete-modal" data-delete-url="/users/{{_id}}/delete" data-item-name="{{name}}" data-item-type="o usuário">Deletar</button>
                             </td>
                         </tr>
                     {{/each}}
