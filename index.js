@@ -5,6 +5,7 @@ const session = require('express-session')
 const MongoDBSession = require('connect-mongodb-session')(session)
 const conn = require('./db/conn')
 const port = process.env.PORT || 3000
+const isVercel = Boolean(process.env.VERCEL)
 const productRoutes = require('./routes/productRoutes')
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -124,7 +125,11 @@ app.use((err, req, res, next) => {
     res.status(500).render('error', { message: 'Ocorreu um erro interno no servidor.' })
 })
 
-app.listen(port, () => {
-    console.log('Server is running on port: ' + port)
-    createDefaultAdmin()
-})
+if (!isVercel) {
+    app.listen(port, () => {
+        console.log('Server is running on port: ' + port)
+        createDefaultAdmin()
+    })
+}
+
+module.exports = app
