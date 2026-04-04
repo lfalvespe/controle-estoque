@@ -81,10 +81,19 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 let dbReady = false
+let bootstrapPromise = null
 const ensureDbConnection = async () => {
     if (dbReady) return
-    await connectDB()
-    dbReady = true
+
+    if (!bootstrapPromise) {
+        bootstrapPromise = (async () => {
+            await connectDB()
+            await createDefaultAdmin()
+            dbReady = true
+        })()
+    }
+
+    await bootstrapPromise
 }
 
 app.use(async (req, res, next) => {
@@ -154,7 +163,9 @@ app.use((err, req, res, next) => {
 if (!isVercel) {
     app.listen(port, () => {
         console.log('Server is running on port: ' + port)
-        createDefaultAdmin()
+        ensureDbConnection().catch((error) => {
+            console.error('Falha no bootstrap inicial:', error.message)
+        })
     })
 }
 
